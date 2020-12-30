@@ -16,10 +16,12 @@ from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 
 def build(input: Path, output: Path, arguments: Optional[dict] = None):
     """Build all the *.proto source files from input to output."""
-    arguments = (arguments or {}) | {
+    if arguments is None:
+        arguments = {}
+    arguments.update({
         "--proto_path": str(input),
         "--python_out": str(output)
-        }
+    })
     arguments = sum(zip(arguments.keys(), arguments.values()), tuple())
     protoc.main(["protoc", *arguments, *map(str, input.rglob("*.proto"))])
 

@@ -41,7 +41,7 @@ class Suffix:
     """
 
     def __init__(
-        self, phonemes: Optional[List[Phoneme]] = None, *, strict: bool = True
+        self, phonemes: Optional[List[Phoneme]] = None, *, strict: bool = False
     ):
         # Retrieve the the suffix or use silence as default value
         suffix = phonemes or [Phoneme.SIL]

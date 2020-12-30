@@ -3,7 +3,7 @@ import json
 import music21
 
 from dataclasses import dataclass
-from typing import Optional, List, Iterator
+from typing import Optional, List, Iterator, Tuple
 
 from .languages import Language, Generic
 from .lyrics import Syllable, Suffix
@@ -24,13 +24,18 @@ class Score:
     theme: Theme = Theme.NORMAL
     language: Language = Generic
     tempo: float = 1.0
+    tracks: Tuple[int] = (0,0,0,0)
+    fill: Phoneme = Phoneme.SIL
 
     def __post_init__(self):
-        if len(self.stream.parts) != 4:
-            raise ValueError("parts must be exactly four, one for each voice")
+        if not all(
+            -(length := len(self.stream.parts)) <= track < length
+            for track in self.tracks
+        ):
+            raise ValueError("track index out of bounds")
         self.parts = [
-            Part(part, self.language, self.tempo)
-            for part in self.stream.parts
+            Part(self.stream.parts[track], self.language, self.tempo, fill=self.fill)
+            for track in self.tracks
         ]
 
     def data(self) -> dict:
@@ -38,7 +43,6 @@ class Score:
             "theme": self.theme.value,
             "parts": [part.data() for part in self.parts],
         }
-
 
 @dataclass
 class Part:
@@ -52,20 +56,22 @@ class Part:
     part: music21.stream.Part
     language: Language
     tempo: float
+    fill: Phoneme = Phoneme.SIL
 
     def __post_init__(self):
         start, sounds = [], []
         events = list(self.events())
-        last: Phoneme = Phoneme.SIL
+        last: Phoneme = self.fill
 
         # Relocate consonants so every syllable starts with a vowel
         for index, _ in enumerate(events):
             # If the current event is not a rest
             if events[index].get("phonemes") is not None:
                 # If the current event has phonemes inside
-                if events[index]["phonemes"]:
+                if events[index]["phonemes"] and len(events[index]["phonemes"]) > 0 :
                     # Relocate start consonants to the previous note or rest
-                    while not events[index]["phonemes"][0].vowel():
+
+                    while len(events[index]["phonemes"]) > 0 and not events[index]["phonemes"][0].vowel():
                         phoneme = events[index]["phonemes"].pop(0)
                         # If the part begins with a consonant, set the start
                         if index == 0:
@@ -78,7 +84,10 @@ class Part:
                             syllable = [Phoneme.SIL, phoneme]
                             events[index - 1]["phonemes"] = syllable
                     # Save the last vowel for melismatic parts
-                    last = events[index]["phonemes"][0]
+                    if len(events[index]["phonemes"]) > 0:
+                        last = events[index]["phonemes"][0]
+                    else:
+                        del events[index]["phonemes"]
                 else:
                     # When going through a melisma, repeat the last note
                     events[index]["phonemes"].append(last)
@@ -99,23 +108,26 @@ class Part:
 
                 # Add all the syllables with the same pitch to the sounds list
                 for position, syllable in enumerate(syllables):
-                    sounds.append(
-                        event
-                        | {
+                    if event:
+                        sounds.append(event)
+                    else:
+                        sounds.append(
+                            {
                             "time": event["time"] + position * duration,
                             "duration": duration,
                             "phonemes": syllable,
-                        }
-                    )
+                            }
+                        )
             else:
                 # The current event is a rest; append it
                 sounds.append(event)
 
         # Update the class variables with the pertaining object representations
-        self.sounds = [
-            Sound(**sound | {"time": sound["time"] * (1 / self.tempo)})
-            for sound in sounds
-        ]
+        self.sounds = []
+        for sound in sounds:
+            sound['time'] = sound["time"] * (1 / self.tempo)
+            self.sounds.append(Sound(**sound))
+
         self.start = Suffix(start)
 
     def events(self) -> Iterator[List]:

@@ -12,6 +12,7 @@ from blob.backend import Backend
 from blob.languages import Random, Generic
 from blob.music import Score
 from blob.themes import Theme
+from blob.phonemes import Phoneme
 from blob.protocol import RecordingMessage, RecordedLibrettos, JitterTemplates
 
 
@@ -119,22 +120,50 @@ def download(context, backend, handle, output, format):
     type=click.Choice(["GENERIC", "RANDOM"], case_sensitive=False),
 )
 @click.option("--tempo", default=1.0, type=float)
+@click.option(
+    "--tracks",
+    default=(0, 1, -2, -1),
+    type=int,
+    nargs=4,
+    help="Indexes for soprano, alto, tenor and bass.",
+    show_default=True
+)
+@click.option(
+    "--fill",
+    default="SIL",
+    type=click.Choice(["SIL", "A", "E", "I", "O", "U"], case_sensitive=False),
+    help="Fill in phoneme for tracks without lyrics."
+)
 @click.pass_obj
 @click.pass_context
-def create(context, backend, input, output, format, theme, tempo, language):
+def create(
+    context,
+    backend,
+    input,
+    output,
+    format,
+    theme,
+    tempo,
+    language,
+    tracks,
+    fill
+):
     """Create a recording from the given MusicXML file."""
     if language == "GENERIC":
         language = Generic
     if language == "RANDOM":
         language = Random
 
+    data = music21.converter.parse(input)
     score = Score(
-        music21.converter.parse(input),
+        stream=data,
         theme=Theme[theme],
         language=language,
-        tempo=tempo
+        tempo=tempo,
+        tracks=(0, 0, 0, 0) if len(data.parts) == 1 else tracks,
+        fill=Phoneme[fill]
     )
-
+    
     context.invoke(
         convert_recording,
         input=json.dumps(score.data()).encode(),
