@@ -34,7 +34,7 @@ class Score:
         ):
             raise ValueError("track index out of bounds")
         self.parts = [
-            Part(self.stream.parts[track], self.language, self.tempo)
+            Part(self.stream.parts[track], self.language, self.tempo, fill=self.fill)
             for track in self.tracks
         ]
 
@@ -125,8 +125,7 @@ class Part:
         # Update the class variables with the pertaining object representations
         self.sounds = []
         for sound in sounds:
-            # sound = {**val}
-            sound['time'] =  sound["time"] * (1 / self.tempo)
+            sound['time'] = sound["time"] * (1 / self.tempo)
             self.sounds.append(Sound(**sound))
 
         self.start = Suffix(start)
