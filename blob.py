@@ -122,30 +122,46 @@ def download(context, backend, handle, output, format):
 @click.option("--tempo", default=1.0, type=float)
 @click.option(
     "--tracks",
-    default="AUTO",
-    type=str,
+    default=(0, 1, -2, -1),
+    type=int,
+    nargs=4,
+    help="Indexes for soprano, alto, tenor and bass.",
+    show_default=True
 )
 @click.option(
-    "--phoneme_fill_in",
+    "--fill",
     default="SIL",
-    type=click.Choice(["SIL", "A", "E", "I", "O", "U"], case_sensitive=False)
+    type=click.Choice(["SIL", "A", "E", "I", "O", "U"], case_sensitive=False),
+    help="Fill in phoneme for tracks without lyrics."
 )
 @click.pass_obj
 @click.pass_context
-def create(context, backend, input, output, format, theme, tempo, language, tracks, phoneme_fill_in):
+def create(
+    context,
+    backend,
+    input,
+    output,
+    format,
+    theme,
+    tempo,
+    language,
+    tracks,
+    fill
+):
     """Create a recording from the given MusicXML file."""
     if language == "GENERIC":
         language = Generic
     if language == "RANDOM":
         language = Random
 
+    data = music21.converter.parse(input)
     score = Score(
-        music21.converter.parse(input),
+        data=data,
         theme=Theme[theme],
         language=language,
         tempo=tempo,
-        tracks=tracks,
-        phoneme_fill_in=Phoneme[phoneme_fill_in]
+        tracks=(0, 0, 0, 0) if len(data.stream.parts) == 1 else tracks,
+        fill=Phoneme[fill]
     )
     
     context.invoke(
