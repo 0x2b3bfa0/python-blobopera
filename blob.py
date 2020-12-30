@@ -111,8 +111,8 @@ def download(context, backend, handle, output, format):
 )
 @click.option(
     "--theme",
-    default="DEFAULT",
-    type=click.Choice(["DEFAULT", "FESTIVE"], case_sensitive=False),
+    default="NORMAL",
+    type=click.Choice(["NORMAL", "FESTIVE"], case_sensitive=False),
 )
 @click.option(
     "--language",
@@ -132,7 +132,7 @@ def download(context, backend, handle, output, format):
 )
 @click.pass_obj
 @click.pass_context
-def create(context, backend, input, output, format, theme, tempo, language, phoneme_fill_in):
+def create(context, backend, input, output, format, theme, tempo, language, tracks, phoneme_fill_in):
     """Create a recording from the given MusicXML file."""
     if language == "GENERIC":
         language = Generic
@@ -144,6 +144,7 @@ def create(context, backend, input, output, format, theme, tempo, language, phon
         theme=Theme[theme],
         language=language,
         tempo=tempo,
+        tracks=tracks,
         phoneme_fill_in=Phoneme[phoneme_fill_in]
     )
     
