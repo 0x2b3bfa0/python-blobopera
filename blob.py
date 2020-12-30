@@ -9,6 +9,7 @@ from google.protobuf.message import EncodeError, DecodeError
 from requests.exceptions import RequestException
 
 from blob.backend import Backend
+from blob.languages import Random, Generic
 from blob.music import Score
 from blob.themes import Theme
 from blob.protocol import RecordingMessage, RecordedLibrettos, JitterTemplates
@@ -112,16 +113,31 @@ def download(context, backend, handle, output, format):
     default="NORMAL",
     type=click.Choice(["NORMAL", "FESTIVE"], case_sensitive=False),
 )
+@click.option(
+    "--language",
+    default="GENERIC",
+    type=click.Choice(["GENERIC", "RANDOM"], case_sensitive=False),
+)
 @click.option("--tempo", default=1.0, type=float)
 @click.pass_obj
 @click.pass_context
-def create(context, backend, input, output, format, theme, tempo):
+def create(context, backend, input, output, format, theme, tempo, language):
     """Create a recording from the given MusicXML file."""
-    music = music21.converter.parse(input)
-    data = json.dumps(Score(music, theme=Theme[theme], tempo=tempo).data())
+    if language == "GENERIC":
+        language = Generic
+    if language == "RANDOM":
+        language = Random
+
+    score = Score(
+        music21.converter.parse(input),
+        theme=Theme[theme],
+        language=language,
+        tempo=tempo
+    )
+
     context.invoke(
         convert_recording,
-        input=data.encode(),
+        input=json.dumps(score.data()).encode(),
         output=output,
         format=format
     )

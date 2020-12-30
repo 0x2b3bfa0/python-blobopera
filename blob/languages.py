@@ -1,4 +1,5 @@
 import re
+import random
 import unicodedata
 
 import music21
@@ -15,18 +16,60 @@ class Language(Protocol):
         pass
 
     @abstractmethod
-    def parse(lyrics: Optional[str]) -> Optional[List[Phoneme]]:
+    def parse(
+        self,
+        time: float,
+        lyrics: Optional[str],
+        index: int
+    ) -> Optional[List[Phoneme]]:
         pass
 
 
-class Generic(Language):
+class Random(Language):
+    """Generate random phonemes for parts without any lyrics."""
     def __init__(self, part: music21.stream.Part, *, strict: bool = False):
         """Initialize the language with the complete stream, so parsers
         can look around and take decisions based on the surrounding lyrics.
         """
         self.part, self.strict = part, strict
 
-    def parse(self, lyrics: Optional[str], index: int) -> Optional[List[Phoneme]]:
+    def parse(
+        self,
+        time: float,
+        lyrics: Optional[str],
+        index: int
+    ) -> Optional[List[Phoneme]]:
+        """Parse the given lyrics and return random vowel-consonant pairs.
+
+        >>> parse(None)
+        [<Phoneme.I: 8>, <Phoneme.C: 2>]
+        """
+        if lyrics and self.strict:
+            raise ValueError("random language doesn't accept lyrics")
+
+        random.seed(time)
+        while not (vowel := random.choice(list(Phoneme))).vowel():
+            pass
+        while not (consonant := random.choice(list(Phoneme))).consonant():
+            pass
+
+        return [vowel, consonant]
+
+
+class Generic(Language):
+    """Convert lyrics to phonemes with simple string matching."""
+    def __init__(self, part: music21.stream.Part, *, strict: bool = False):
+        """Initialize the language with the complete stream, so parsers
+        can look around and take decisions based on the surrounding lyrics.
+        """
+        self.part, self.strict = part, strict
+
+    def parse(
+        self,
+        time: float,
+        lyrics: Optional[str],
+        index: int
+    ) -> Optional[List[Phoneme]]:
         """Parse the given lyrics and return a list of phonemes, extracted
         with a regular explression from the normalized lyrics fragment.
 

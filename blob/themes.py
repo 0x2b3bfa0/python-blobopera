@@ -9,5 +9,5 @@ class Theme(Enum):
     <Theme.FESTIVE: 1>
     """
 
-    DEFAULT = 0
+    NORMAL = 0
     FESTIVE = 1
