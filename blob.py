@@ -11,6 +11,7 @@ from requests.exceptions import RequestException
 from blob.backend import Backend
 from blob.music import Score
 from blob.themes import Theme
+from blob.phonemes import Phoneme
 from blob.protocol import RecordingMessage, RecordedLibrettos, JitterTemplates
 
 
@@ -109,16 +110,26 @@ def download(context, backend, handle, output, format):
 )
 @click.option(
     "--theme",
-    default="NORMAL",
-    type=click.Choice(["NORMAL", "FESTIVE"], case_sensitive=False),
+    default="DEFAULT",
+    type=click.Choice(["DEFAULT", "FESTIVE"], case_sensitive=False),
 )
 @click.option("--tempo", default=1.0, type=float)
+@click.option(
+    "--tracks",
+    default="AUTO",
+    type=str,
+)
+@click.option(
+    "--phoneme_fill_in",
+    default="SIL",
+    type=click.Choice(["SIL", "A", "E", "I", "O", "U"], case_sensitive=False)
+)
 @click.pass_obj
 @click.pass_context
-def create(context, backend, input, output, format, theme, tempo):
+def create(context, backend, input, output, format, theme, tempo, tracks,phoneme_fill_in):
     """Create a recording from the given MusicXML file."""
     music = music21.converter.parse(input)
-    data = json.dumps(Score(music, theme=Theme[theme], tempo=tempo).data())
+    data = json.dumps(Score(music, theme=Theme[theme], tempo=tempo, tracks=tracks, phoneme_fill_in=Phoneme[phoneme_fill_in]).data())
     context.invoke(
         convert_recording,
         input=data.encode(),
