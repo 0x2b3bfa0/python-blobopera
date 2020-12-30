@@ -156,7 +156,7 @@ def create(
 
     data = music21.converter.parse(input)
     score = Score(
-        data=data,
+        stream=data,
         theme=Theme[theme],
         language=language,
         tempo=tempo,
