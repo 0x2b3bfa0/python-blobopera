@@ -160,7 +160,7 @@ def create(
         theme=Theme[theme],
         language=language,
         tempo=tempo,
-        tracks=(0, 0, 0, 0) if len(data.stream.parts) == 1 else tracks,
+        tracks=(0, 0, 0, 0) if len(data.parts) == 1 else tracks,
         fill=Phoneme[fill]
     )
     
