@@ -21,7 +21,7 @@ class Score:
     """
 
     stream: music21.stream.Stream
-    theme: Theme = Theme.DEFAULT
+    theme: Theme = Theme.NORMAL
     language: Language = Generic
     tempo: float = 1.0
     tracks: str = "AUTO"
@@ -158,7 +158,11 @@ class Part:
                     "duration": item["durationSeconds"],
                 }
             elif type(item["element"]) is music21.note.Note:
-                phonemes = language.parse(item["element"].lyric, index)
+                phonemes = language.parse(
+                    item["offsetSeconds"],
+                    item["element"].lyric,
+                    index
+                )
                 yield {
                     "time": item["offsetSeconds"],
                     "duration": item["durationSeconds"],
