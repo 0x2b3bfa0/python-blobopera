@@ -3,7 +3,7 @@ import json
 import music21
 
 from dataclasses import dataclass
-from typing import Optional, List, Iterator
+from typing import Optional, List, Iterator, Tuple
 
 from .languages import Language, Generic
 from .lyrics import Syllable, Suffix
@@ -24,41 +24,25 @@ class Score:
     theme: Theme = Theme.NORMAL
     language: Language = Generic
     tempo: float = 1.0
-    tracks: str = "AUTO"
-    phoneme_fill_in: Phoneme = Phoneme.SIL
+    tracks: Tuple[int] = (0,0,0,0)
+    fill: Phoneme = Phoneme.SIL
 
     def __post_init__(self):
-        if self.tracks == "AUTO":
-            self.auto_select_parts()
-        else:
-            self.manually_select_parts()
-        del self.tracks
+        if not all(
+            -(length := len(self.stream.parts)) <= track < length
+            for track in self.tracks
+        ):
+            raise ValueError("track index out of bounds")
+        self.parts = [
+            Part(self.stream.parts[track], self.language, self.tempo)
+            for track in self.tracks
+        ]
 
     def data(self) -> dict:
         return {
             "theme": self.theme.value,
             "parts": [part.data() for part in self.parts],
         }
-
-    def auto_select_parts(self):
-        numParts = len(self.stream.parts)
-        self.parts = [None, None, None, None]
-        self.parts[0] = Part(self.stream.parts[0 % numParts], self.language, self.tempo, phoneme_fill_in=self.phoneme_fill_in)
-        self.parts[1] = Part(self.stream.parts[1 % numParts], self.language, self.tempo, phoneme_fill_in=self.phoneme_fill_in)
-        self.parts[2] = Part(self.stream.parts[-(2 % numParts)], self.language, self.tempo, phoneme_fill_in=self.phoneme_fill_in)
-        self.parts[3] = Part(self.stream.parts[-(1 % numParts)], self.language, self.tempo, phoneme_fill_in=self.phoneme_fill_in)
-
-    def manually_select_parts(self):
-        self.parts = []
-        trackList = self.tracks.split(',')
-        lastTrack = 0
-        for index in range(4):
-            currentTrack = lastTrack
-            if len(trackList) > index:
-                currentTrack = int(trackList[index])
-            self.parts.append(Part(self.stream.parts[currentTrack], self.language, self.tempo, phoneme_fill_in=self.phoneme_fill_in))
-            lastTrack = currentTrack
-
 
 @dataclass
 class Part:
@@ -72,12 +56,12 @@ class Part:
     part: music21.stream.Part
     language: Language
     tempo: float
-    phoneme_fill_in: Phoneme = Phoneme.SIL
+    fill: Phoneme = Phoneme.SIL
 
     def __post_init__(self):
         start, sounds = [], []
         events = list(self.events())
-        last: Phoneme = self.phoneme_fill_in
+        last: Phoneme = self.fill
 
         # Relocate consonants so every syllable starts with a vowel
         for index, _ in enumerate(events):
@@ -140,8 +124,8 @@ class Part:
 
         # Update the class variables with the pertaining object representations
         self.sounds = []
-        for val in sounds:
-            sound = {**val}
+        for sound in sounds:
+            # sound = {**val}
             sound['time'] =  sound["time"] * (1 / self.tempo)
             self.sounds.append(Sound(**sound))
 
