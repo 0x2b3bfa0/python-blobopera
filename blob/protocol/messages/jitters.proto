@@ -1,9 +1,0 @@
-syntax = "proto2";
-
-message JitterTemplates {
-  message Template {
-    repeated float values = 1;
-  }
-
-  repeated Template templates = 1;
-}

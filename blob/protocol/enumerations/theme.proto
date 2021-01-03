@@ -1,6 +1,0 @@
-syntax = "proto2";
-
-enum Theme {
-  Normal  = 0;
-  Festive = 1;
-}
