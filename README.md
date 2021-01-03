@@ -23,11 +23,11 @@
 Unofficial toolkit to convert MusicXML files into [Blob Opera][1] scores with
 real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 
-## Demonstration
+## Samples
 
-You can listen :point_right:[**here**][5]:point_left: to a custom version
-of [Adeste Fideles][6] with real lyrics, extracted from [this score][7]
-without any modification.
+* **[Adeste Fideles][5]** ([_source_][7], [_information_][6])
+* **[Symphony No. 9 (Beethoven)][13]** ([_source_][15], [_information_][14])
+* **[_La bomba_ (Mateo Flecha)][16]** ([_source_][18], [_information_][17])
 
 ## Usage
 
@@ -83,3 +83,9 @@ validate your code before starting a pull request.
 [8]: https://github.com/Xmader/musescore-downloader
 [11]: https://python-poetry.org/docs/
 [12]: ./documentation/command
+[13]: https://g.co/arts/vFxPVuuTATXNvX9F8
+[14]: https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)#IV._Finale
+[15]: https://musescore.com/user/34418260/scores/6430537
+[16]: https://artsandculture.google.com/experiment/blob-opera/AAHWrq360NcGbw?cp=eyJyIjoiNVNxb0RhRlB1VnRuIn0.
+[17]: https://en.wikipedia.org/wiki/Mateo_Flecha
+[18]: https://musescore.com/user/28092/scores/85307

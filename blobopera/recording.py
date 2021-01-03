@@ -162,12 +162,13 @@ class Part(proto.Message):
 
                 # Add all the syllables with the same pitch to the sounds list
                 for position, syllable in enumerate(syllables):
-                        sounds.append(
-                            {**event,
-                                "time": event["time"] + position * _duration,
-                                "phonemes": syllable,
-                            }
-                        )
+                    sounds.append(
+                        {
+                            **event,
+                            "time": event["time"] + position * _duration,
+                            "phonemes": syllable,
+                        }
+                    )
             else:
                 # The current event is a rest; append it
                 sounds.append(event)
