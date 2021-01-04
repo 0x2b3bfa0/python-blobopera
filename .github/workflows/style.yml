@@ -23,9 +23,3 @@ jobs:
     - name: Run
       run: |
         poetry run poe style
-        git config --global user.name '0x2b3bfa0'
-        git config --global user.email '0x2b3bfa0@users.noreply.github.com'
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-        git checkout $GITHUB_HEAD_REF
-        git commit --all --message "fixup: Format code with Black" || true
-        git push || true
