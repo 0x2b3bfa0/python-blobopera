@@ -5,7 +5,7 @@ from pathlib import Path
 import music21
 import typer
 
-from ..language import Generic, Random
+from ..languages import Generic, Random
 from ..phoneme import Phoneme
 from ..recording import Recording
 from ..theme import Theme

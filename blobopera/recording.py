@@ -3,7 +3,7 @@ from typing import Iterator, List, Optional, Tuple
 import music21
 import proto
 
-from .language import Generic, Language
+from .languages import Generic, Language
 from .phoneme import Phoneme, Timed
 from .theme import Theme
 

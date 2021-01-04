@@ -66,7 +66,11 @@ flake8-bandit = ["-S101"]
 "flake8-*" = ["-A001"]
 pyflakes = ["-F811", "-F401"]
 
-[tool.flakehell.exceptions."blobopera/language.py"]
+
+[tool.flakehell.exceptions."blobopera/**/__init__.py"]
+pyflakes = ["-F401"]
+
+[tool.flakehell.exceptions."blobopera/languages/random.py"]
 flake8-bandit = ["-S311"]
 
 [tool.flakehell.exceptions."blobopera/command/*.py"]
@@ -85,4 +89,4 @@ lint = "flakehell lint"
 test = "pytest"
 coverage = {"shell" = "coverage run -m pytest; coverage report -m"}
 document = "typer blobopera.command utils docs --output documentation/command/README.md --name blobopera"
-all = ["style", "lint", "test", "coverage", "document"]
+all = ["style", "lint", "coverage", "document"]
