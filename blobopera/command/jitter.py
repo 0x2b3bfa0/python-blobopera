@@ -1,4 +1,6 @@
 """Inspect the default set of audio jitter templates."""
+
+from itertools import islice
 from typing import Optional
 
 import requests
@@ -45,11 +47,8 @@ def generate(
     seed: Optional[int] = None,
 ):
     """Generate pseudorandom jitters from a file with jitter templates."""
-    templates: Jitter = common.parse(input.read(), Jitter)
-    generator: Generator = Generator(templates, seed)
+    jitter: Jitter = common.parse(input.read(), Jitter)
+    generator: Generator = Generator(jitter, seed=seed)
 
-    for index, value in enumerate(generator):
-        if count is None or index < count:
-            print(value, file=output)
-        else:
-            break
+    for value in islice(generator, count):
+        print(value, file=output)

@@ -1,56 +1,79 @@
+"""Audio jitter templates."""
+from functools import partial
 from random import Random
+from typing import Callable, Iterator
 
 import proto
+from more_itertools import pairwise
 
 
 class Template(proto.Message):
-    """Sequence of jitter values."""
+    """Sequence of jitter float values."""
 
-    values = proto.RepeatedField(proto.FLOAT, number=1, json_name="values")
+    values = proto.RepeatedField(proto.FLOAT, number=1)
 
 
 class Jitter(proto.Message):
-    """Set of jitter templates."""
+    """Sequence of jitter templates."""
 
-    templates = proto.RepeatedField(Template, number=1, json_name="templates")
+    templates = proto.RepeatedField(Template, number=1)
 
 
 class Generator:
     """Jitter value generator."""
 
-    def __init__(self, jitter: Jitter, seed: any = None):
-        self.templates: list[list] = [
-            list(template.values) for template in jitter.templates
-        ]
+    def __init__(self, jitter: Jitter, *, overlap: int = 10, seed: any = None):
         self.random: Random = Random(seed)
-        self.previous: list = self.random.choice(self.templates)
-        self.current: list = self.random.choice(self.templates)
-        self.frame: int = 0
+        self.jitter: Jitter = jitter
+        self.overlap: int = overlap
 
-    def __next__(self) -> float:
-        if self.frame >= 10:
-            result: float = self.current[self.frame]
-        else:
-            result: float = self._combine(
-                self.previous[len(self.previous) - 1 - 10 + self.frame],
-                self.current[self.frame],
-                self._normalize(0, 10, self.frame),
+    def __iter__(self) -> Iterator[float]:
+        """Chain templates in a random order with smooth transitions.
+
+        Given a list of templates where each template holds a list of float
+        values, this algorithm will perform the following steps:
+
+        1. Loop endlessly over randomly chosen templates, allowing the inner
+           code to access both the current template and the previous template.
+
+        2. Overlap each of these template pairs by the specified number of
+           positions and perform a weighted mix of the overlapping values:
+
+           1 2 3 · · · ·
+           · · 4 5 6 · ·
+           · · · · 7 8 9
+           - - - - - - -
+           1 2 * 5 * 8 9
+
+           The mixing algorithm creates a smooth transition between the old
+           and new templates by cross-fading the overlapping values from the
+           old and new template.
+        """
+        # Create a partial function that returns a randomly chosen template.
+        choose: Callable = partial(self.random.choice, self.jitter.templates)
+        # Create an iterator that provides randomly chosen templates.
+        random: Iterator[Template] = iter(choose, None)
+        # Alias the overlap variable for simplicity.
+        count: int = self.overlap
+
+        # Iterate over randomly chosen templates with (previous, current) pairs
+        for previous, current in pairwise(random):  # (0, 1), (1, 2), (2, 3)...
+
+            # Get the tail (last values) of the previous template and the head
+            # (first values) of the current template. Due to an off-by-one
+            # error in the original code, the tail from the previous template
+            # starts one index earlier and ends with the penultimate value.
+            tail, head = (
+                previous.values[-count - 1 : -1],
+                current.values[:count],
             )
 
-        self.frame += 1
-        if self.frame >= len(self.current) - 10:
-            new = self.random.choice(self.templates)
-            self.previous, self.current = self.current, new
-            self.frame = 0
+            # For each pair of overlapped values:
+            for index, (old, new) in enumerate(zip(tail, head)):
+                # Calculate the mixing weights for the pair of values.
+                increasing, decreasing = (weight := index / count), 1 - weight
+                # Yield the weighted mix of the overlapping values.
+                yield old * decreasing + new * increasing
 
-        return result
-
-    def __iter__(self):
-        return self
-
-    def _normalize(self, offset: int, limit: int, value: int):
-        normalized = (value - offset) / (limit - offset)
-        return max(0, min(normalized, 1))  # Clamp value
-
-    def _combine(self, previous: float, current: float, value: float) -> float:
-        return (1 - value) * previous + value * current
+            # Yield all the remaining (non-overlapping) values.
+            yield from current.values[count:][:-count]
