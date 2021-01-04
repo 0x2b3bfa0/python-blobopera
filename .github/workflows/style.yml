@@ -22,4 +22,4 @@ jobs:
         poetry install
     - name: Run
       run: |
-        poetry run poe style
+        poetry run poe style-check

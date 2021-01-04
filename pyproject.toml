@@ -77,6 +77,9 @@ flake8-bandit = ["-S311"]
 isort = "isort --profile black -m 3 ."
 autoflake = "autoflake --recursive --in-place --remove-unused-variables ."
 black = "black --line-length=79 ."
+isort-check = "isort --profile black -m 3 --check-only ."
+black-check = "black --check --line-length=79 ."
+style-check = ["isort-check", "black-check"]
 style = ["isort", "autoflake", "black"]
 lint = "flakehell lint"
 test = "pytest"
