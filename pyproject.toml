@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "blobopera"
 version = "0.1.0"
-description = "Unofficial Google Arts & Culture Blob Opera toolkit"
+description = "Unofficial toolkit for Google Arts & Culture Blob Opera"
 authors = ["Helio Machado <0x2b3bfa0@googlemail.com>"]
 readme = "README.md"
 
@@ -36,6 +36,8 @@ pep8-naming = "^0.11.1"
 responses = "^0.12.1"
 poethepoet = "^0.9.0"
 black = "^20.8b1"
+furo = "^2020.12.30-beta.24"
+Sphinx = "^3.4.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -57,27 +59,36 @@ show_source = true
 per_file_ignores=[""]
 
 [tool.flakehell.plugins]
-pyflakes = ["+*"]
 flake8-bandit = ["+*"]
-"flake8-*" = ["+*", "-SC*"]
+flake8-bugbear = ["+*"]
+flake8-builtins = ["+*"]
+flake8-comprehensions = ["+*"]
+flake8-darglint = ["+*"]
+flake8-docstrings = ["+*"]
+flake8-eradicate = ["+*"]
+flake8-isort = ["+*"]
+flake8-mutable = ["+*"]
+flake8-pytest-style = ["+*"]
+flake8-spellcheck = ["-*"]
+mccabe = ["+*"]
+pep8-naming = ["+*", "-N804"]  # Yes, I mean it; also self for class methods.
+pycodestyle = ["+*", "-E741", "-E203"]
+pyflakes = ["+*"]
+pylint = ["+*"]
 
 [tool.flakehell.exceptions."tests/*.py"]
 flake8-bandit = ["-S101"]
-"flake8-*" = ["-A001"]
+flake8-builtins = ["-A001"]
 pyflakes = ["-F811", "-F401"]
-
 
 [tool.flakehell.exceptions."blobopera/**/__init__.py"]
 pyflakes = ["-F401"]
 
-[tool.flakehell.exceptions."blobopera/languages/random.py"]
-flake8-bandit = ["-S311"]
-
 [tool.flakehell.exceptions."blobopera/command/*.py"]
-"flake8-*" = ["-A001", "-A002", "-B008"]
+flake8-builtins = ["-A002"]
+flake8-bugbear = ["-B008"]
 
 [tool.poe.tasks]
-
 isort = "isort --profile black -m 3 ."
 autoflake = "autoflake --recursive --in-place --remove-unused-variables ."
 black = "black --line-length=79 ."
@@ -88,5 +99,9 @@ style = ["isort", "autoflake", "black"]
 lint = "flakehell lint"
 test = "pytest"
 coverage = {"shell" = "coverage run -m pytest; coverage report -m"}
-document = "typer blobopera.command utils docs --output documentation/command/README.md --name blobopera"
+document-command = "typer blobopera.command utils docs --output documentation/command/README.md --name blobopera"
+document-module-generate = "sphinx-apidoc -feo documentation/module . tests"
+document-module-build = "sphinx-build -Wb html -c documentation -d documentation/module/_build/doctrees documentation/module/ documentation/module/_build/html/"
+document-module = ["document-module-generate", "document-module-build"]
+document = ["document-command", "document-module"]
 all = ["style", "lint", "coverage", "document"]

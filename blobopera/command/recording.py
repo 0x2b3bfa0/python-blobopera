@@ -2,10 +2,10 @@
 import tempfile
 from pathlib import Path
 
-import music21
+import music21  # type: ignore
 import typer
 
-from ..languages import Generic, Random
+from ..languages import GenericLanguage, RandomLanguage
 from ..phoneme import Phoneme
 from ..recording import Recording
 from ..theme import Theme
@@ -91,65 +91,59 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
     alto_part: int = 1,
     tenor_part: int = -2,
     bass_part: int = -1,
-    # parts: Tuple[int, int, int, int] = (0, 1, -2, -1),  # FIXME: consider.
     tempo: float = 1.0,
-    duration: float = 0.1,
-    controlled: bool = False,
 ):
     """Import a recording from a musical score file.
 
     This command tries to create a recording file from a musical score,
-    resorting to the following options to adjust the result:
+    resorting to the provided options to adjust the result.
 
-    Theme: the festive theme adds fluffy red and white hats to singers
-    and shows a falling snow animation through the entire scene.
+    Options:
+        Theme: the festive theme adds fluffy red and white hats to singers
+        and shows a falling snow animation through the entire scene.
 
-    Format: the output format used for the recording file.
+        Format: the output format used for the recording file.
 
-    Language: this language will be used to interpret the score lyrics and
-    calculate the most accurate phonemes for each syllable; the random language
-    builds random syllables from vowel + consonant pairs for every note.
+        Language: this language will be used to interpret the score lyrics and
+        calculate the most accurate phonemes for each syllable; the random
+        language builds random syllables from vowel + consonant pairs for
+        every note.
 
-    Fill: a phoneme used to fill parts that don't have lyrics at all; silence
-    will mute the affected voices, and any other value will make them sing a
-    single vowel with the note pitches.
+        Default: a phoneme used to fill parts that don't have lyrics at all;
+        silence will mute the affected voices, and any other value will
+        make them sing a single vowel with the note pitches.
 
-    Tracks: for pieces with a number of tracks other than four, these options
-    will define which tracks are used for which voices; 0 means the first
-    (topmost) part, 1 the second, -1 the last, -2 the penultimate, et cetera.
+        Parts: for pieces with a number of parts other than four, these
+        options will define which parts are used for which voices; 0 means
+        the first (topmost) part, 1 the second, -1 the last, -2 the
+        penultimate, et cetera.
 
-    Tempo: this value modifies the global tempo by the specified amount; 0.5
-    would slow down the piece to half its original speed, and 2.0 would make
-    it twice as quicker.
-
-    Duration: tunes the duration parameter; it's purpose is yet unknown.
-
-    Controlled: sets the controlled flag; it's purpose is yet unknown.
+        Tempo: this value modifies the global tempo by the specified amount;
+        0.5 would slow down the piece to half its original speed, and 2.0
+        would make it twice as quicker.
     """
 
     if language == common.PhonemeLanguage.GENERIC:
-        language = Generic
+        language = GenericLanguage
     if language == common.PhonemeLanguage.RANDOM:
-        language = Random
+        language = RandomLanguage
 
     score = music21.converter.parse(input)
-    tracks = soprano_part, alto_part, tenor_part, bass_part
+    parts = soprano_part, alto_part, tenor_part, bass_part
 
     if len(score.parts) == 0:
         typer.echo("Error: no parts detected.", err=True)
         raise typer.Exit(code=1)
     elif len(score.parts) == 1:
-        tracks = (0, 0, 0, 0)  # Assign the same part to all the voices.
+        parts = (0, 0, 0, 0)  # Assign the same part to all the voices.
 
     recording = Recording.from_score(
         score=score,
         theme=Theme[theme.value],
         language=language,
         tempo=tempo,
-        tracks=tracks,
+        parts=parts,
         fill=Phoneme[fill.value],
-        duration=duration,
-        controlled=controlled,
     )
 
     output.write(

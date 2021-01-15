@@ -1,7 +1,7 @@
 from pathlib import Path
 from shutil import copytree
 
-import pytest
+import pytest  # type: ignore
 
 
 @pytest.fixture()

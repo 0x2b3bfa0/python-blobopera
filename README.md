@@ -23,11 +23,16 @@
 Unofficial toolkit to convert MusicXML files into [Blob Opera][1] scores with
 real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 
+## Documentation
+
+* Full [command documentation][12].
+* Generated [module documentation][19].
+
 ## Samples
 
 * **[Adeste Fideles][5]** ([_source_][7], [_information_][6])
 * **[Symphony No. 9 (Beethoven)][13]** ([_source_][15], [_information_][14])
-* **[_La bomba_ (Mateo Flecha)][16]** ([_source_][18], [_information_][17])
+* **[Ave Maria (Schubert)][20]** ([_source_][21], [_information_][22])
 
 ## Usage
 
@@ -53,8 +58,6 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
    ```
 
 5. Visit the generated link with your browser.
-
-> :book:  ***You can also read the full [command documentation][12]***
 
 ## Known issues
 
@@ -89,3 +92,7 @@ validate your code before starting a pull request.
 [16]: https://artsandculture.google.com/experiment/blob-opera/AAHWrq360NcGbw?cp=eyJyIjoiNVNxb0RhRlB1VnRuIn0.
 [17]: https://en.wikipedia.org/wiki/Mateo_Flecha
 [18]: https://musescore.com/user/28092/scores/85307
+[19]: https://0x2b3bfa0.github.io/python-blobopera
+[20]: https://g.co/arts/xQGR5aWBwuDeGqTq8
+[21]: http://www.cafe-puccini.dk/Schubert_GdurMesse.aspx
+[22]: https://en.wikipedia.org/wiki/Ave_Maria_(Schubert)

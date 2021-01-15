@@ -276,32 +276,31 @@ $ blobopera recording export [OPTIONS] INPUT OUTPUT
 Import a recording from a musical score file.
 
 This command tries to create a recording file from a musical score,
-resorting to the following options to adjust the result:
+resorting to the provided options to adjust the result.
 
-Theme: the festive theme adds fluffy red and white hats to singers
-and shows a falling snow animation through the entire scene.
+Options:
+    Theme: the festive theme adds fluffy red and white hats to singers
+    and shows a falling snow animation through the entire scene.
 
-Format: the output format used for the recording file.
+    Format: the output format used for the recording file.
 
-Language: this language will be used to interpret the score lyrics and
-calculate the most accurate phonemes for each syllable; the random language
-builds random syllables from vowel + consonant pairs for every note.
+    Language: this language will be used to interpret the score lyrics and
+    calculate the most accurate phonemes for each syllable; the random
+    language builds random syllables from vowel + consonant pairs for
+    every note.
 
-Fill: a phoneme used to fill parts that don't have lyrics at all; silence
-will mute the affected voices, and any other value will make them sing a
-single vowel with the note pitches.
+    Default: a phoneme used to fill parts that don't have lyrics at all;
+    silence will mute the affected voices, and any other value will
+    make them sing a single vowel with the note pitches.
 
-Tracks: for pieces with a number of tracks other than four, these options
-will define which tracks are used for which voices; 0 means the first
-(topmost) part, 1 the second, -1 the last, -2 the penultimate, et cetera.
+    Parts: for pieces with a number of parts other than four, these
+    options will define which parts are used for which voices; 0 means
+    the first (topmost) part, 1 the second, -1 the last, -2 the
+    penultimate, et cetera.
 
-Tempo: this value modifies the global tempo by the specified amount; 0.5
-would slow down the piece to half its original speed, and 2.0 would make
-it twice as quicker.
-
-Duration: tunes the duration parameter; it's purpose is yet unknown.
-
-Controlled: sets the controlled flag; it's purpose is yet unknown.
+    Tempo: this value modifies the global tempo by the specified amount;
+    0.5 would slow down the piece to half its original speed, and 2.0
+    would make it twice as quicker.
 
 **Usage**:
 
@@ -325,8 +324,6 @@ $ blobopera recording import [OPTIONS] INPUT OUTPUT
 * `--tenor-part INTEGER`: [default: -2]
 * `--bass-part INTEGER`: [default: -1]
 * `--tempo FLOAT`: [default: 1.0]
-* `--duration FLOAT`: [default: 0.1]
-* `--controlled / --no-controlled`: [default: False]
 * `--help`: Show this message and exit.
 
 ### `blobopera recording upload`

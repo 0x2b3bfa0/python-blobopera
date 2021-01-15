@@ -1,32 +1,22 @@
-import abc
+"""Phonemes used to represent lyrics for singing voice synthesis.
 
-import proto
+Note:
+    This phoneme collection seems to have been designed with Italian or
+    Eclesiastical Latin in mind, so it's quite hard to describe certain sounds
+    from other languages, like the German vowels ü, ö and ä.
+"""
+import proto  # type: ignore
 
 __protobuf__ = proto.module(package=__name__)
 
 
-class Classifiable:
-    """Mixin that allows phoneme classes to determine its category."""
+class Phoneme(proto.Enum):
+    """Lyrics phoneme.
 
-    @abc.abstractmethod
-    def get(self) -> proto.Enum:
-        """Return the enumeration object."""
-
-    def vowel(self) -> bool:
-        """Determine if the phoneme is a vowel."""
-        return self.get().name.lower() in "aeiou"
-
-    def silence(self) -> bool:
-        """Determine if the phoneme is a silence."""
-        return self.get().name.lower() == "silence"
-
-    def consonant(self) -> bool:
-        """Determine if the phoneme is a consonant."""
-        return not self.get().vowel() and not self.get().silence()
-
-
-class Phoneme(Classifiable, proto.Enum):
-    """Phoneme enumeration."""
+    Note:
+        The special value :py:attr:`SILENCE` indicates
+        the total absence of sound.
+    """
 
     I = 0
     A = 1
@@ -58,17 +48,26 @@ class Phoneme(Classifiable, proto.Enum):
     Z = 27
     TZ = 28
 
-    def get(self):
-        return self
+    def is_vowel(self) -> bool:
+        """Determine if the phoneme is a vowel.
 
+        Returns:
+            Whether the phoneme is a vowel or not.
+        """
+        return self in (self.A, self.E, self.I, self.O, self.U)
 
-class Timed(Classifiable, proto.Message):
-    """Timed phoneme, with duration in a yet unknown unit of time."""
+    def is_silence(self) -> bool:
+        """Determine if the phoneme is a silence.
 
-    phoneme = proto.Field(Phoneme, number=1, optional=True, json_name="name")
-    duration = proto.Field(
-        proto.FLOAT, number=2, optional=True, json_name="duration"
-    )
+        Returns:
+            Whether the phoneme is a :py:attr:`SILENCE` or not.
+        """
+        return self == self.SILENCE
 
-    def get(self):
-        return self.phoneme
+    def is_consonant(self) -> bool:
+        """Determine if the phoneme is a consonant.
+
+        Returns:
+            Whether the phoneme is a consonant or not.
+        """
+        return not self.is_vowel() and not self.is_silence()

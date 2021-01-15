@@ -44,8 +44,8 @@ def export(
     """Export phonemes of recorded libretto in a human-friendly format."""
     corpus: Corpus = common.parse(input.read(), Corpus)
 
-    for libretto in corpus.librettos:
+    for fragment in corpus.fragments:
         hyphenated = " ".join(
-            Phoneme(timed.phoneme).name for timed in libretto.phonemes
+            Phoneme(timed.phoneme).name for timed in fragment.phonemes
         ).replace(Phoneme.SILENCE.name, "-")
         print(hyphenated, file=output)

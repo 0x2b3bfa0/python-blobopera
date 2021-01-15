@@ -3,12 +3,13 @@ import re
 import secrets
 from dataclasses import dataclass
 
-import pytest
-import responses
+import pytest  # type: ignore
+import responses  # type: ignore
 
 
 @pytest.fixture()
 def mocked_backend():
+    """Fixture that provides a backend mock."""
     with responses.RequestsMock() as _responses:
         yield Backend(_responses)
 

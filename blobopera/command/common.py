@@ -1,10 +1,15 @@
+"""Common enumerations and functions.
+
+This file provides data import functions and some shared defaults and
+enumerations used by choice-like subcommand options.
+"""
 from enum import Enum
 from typing import Type
 
 import typer
 from google.protobuf.json_format import ParseError
 from google.protobuf.message import DecodeError, EncodeError
-from proto import Message
+from proto import Message  # type: ignore
 
 
 class ConvertFormat(str, Enum):
@@ -87,7 +92,15 @@ DefaultInterfaceTheme = typer.Option(
 
 
 def parse(data: bytes, message: Type[Message]) -> Message:
-    """Parse a Protocol Buffer message from any of its representations."""
+    """Parse a Protocol Buffer message from any of its representations.
+
+    Arguments:
+        data: the input data, either raw protocol buffer bytes or JSON bytes.
+        message: the class (not an instance!) of the protocol buffer message.
+
+    Returns:
+        An instance of the given message type.
+    """
     try:
         try:
             # Try to interpret the input data as a JSON object.
@@ -108,13 +121,22 @@ def parse(data: bytes, message: Type[Message]) -> Message:
 def convert(
     input: bytes, format: ConvertFormat, message: Type[Message]
 ) -> bytes:
-    """Convert a Protocol Buffer message between its representations."""
+    """Convert a Protocol Buffer message between its representations.
+
+    Arguments:
+        data: the input data, either raw protocol buffer bytes or JSON bytes.
+        format: the output format for the conversion result.
+        message: the class (not an instance!) of the protocol buffer message.
+
+    Returns:
+        The converted data.
+    """
 
     structure = parse(input, message)
     if format == ConvertFormat.JSON:
         data: bytes = message.to_json(structure).encode()
     elif format == ConvertFormat.BINARY:
-        data: bytes = message.serialize(structure)
+        data = message.serialize(structure)
     else:
         raise ValueError("invalid format")
 
