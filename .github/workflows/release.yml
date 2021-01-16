@@ -3,6 +3,7 @@ name: release
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,7 +21,6 @@ jobs:
         poetry install
     - name: Run
       run: |
-        poetry build
-        poetry publish
+        poetry publish --build -u __token__ -p "${PYPI_TOKEN}"
       env:
-        POETRY_PYPI_TOKEN_PYPI: ${{env.PYPI_TOKEN}}
+        PYPI_TOKEN: ${{secrets.PYPI_TOKEN}}

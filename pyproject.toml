@@ -1,9 +1,14 @@
 [tool.poetry]
 name = "blobopera"
-version = "0.1.0"
+version = "1.0.0"
 description = "Unofficial toolkit for Google Arts & Culture Blob Opera"
 authors = ["Helio Machado <0x2b3bfa0@googlemail.com>"]
+maintainers = ["Helio Machado <0x2b3bfa0@googlemail.com>"]
 readme = "README.md"
+license = "GPL-3.0-or-later"
+homepage = "https://github.com/0x2b3bfa0/python-blobopera"
+repository = "https://github.com/0x2b3bfa0/python-blobopera"
+documentation = "https://0x2b3bfa0.github.io/python-blobopera"
 
 [tool.poetry.dependencies]
 python = "^3.9"

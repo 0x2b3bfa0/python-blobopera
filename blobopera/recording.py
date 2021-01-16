@@ -23,7 +23,6 @@ class TimedPhoneme(proto.Message):
         Not to be mistaken with :py:class:`.libretto.TimedPhoneme`, which
         serves to a completely different purpose and has different fields.
 
-
     Attributes:
         phoneme (Phoneme): The phoneme to utter.
         duration (float): Duration, whose purpose is yet unknown. Empirically,
@@ -197,7 +196,7 @@ class Note(proto.Message):
         # Unfortunately, timing information is being stored as IEEE 754
         # binary32 single-precision float, so we need to reconstruct the
         # original fraction to the nearest denominator to approximate its
-        # real musical duration. This is a humongous HACK and yiends wrong
+        # real musical duration. This is a humongous HACK and yields wrong
         # results for durations below the two hundred fifty-sixth note. This
         # duration is small enough to be considered acceptable, but...
         note.offset = Fraction(self.time).limit_denominator(100)
@@ -241,6 +240,7 @@ class Part(proto.Message):
             language: The absolute start offset of the note, in seconds.
             tempo: The tempo correction factor; 0.5 makes it twice as slow.
             fill: The phoneme to use if none of the notes has lyrics.
+
         Returns:
             An instance of this class containing the basic information required
             to play the given part.
