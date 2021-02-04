@@ -37,6 +37,8 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 * **[Symphony No. 9 (Beethoven)][13]** ([_source_][15], [_information_][14])
 * **[Ave Maria (Schubert)][20]** ([_source_][21], [_information_][22])
 
+:book:&nbsp;&nbsp;**Want to contribute a new sample? Click [here][24]!**
+
 ## Usage
 
 1. Create a score file:
@@ -115,3 +117,4 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 [21]: http://www.cafe-puccini.dk/Schubert_GdurMesse.aspx
 [22]: https://en.wikipedia.org/wiki/Ave_Maria_(Schubert)
 [23]: ./documentation/command#blobopera-recording-import
+[24]: https://github.com/0x2b3bfa0/python-blobopera/issues/new?labels=recording&template=new-recording.md&title=New+recording%3A+%7Btitle%7D
