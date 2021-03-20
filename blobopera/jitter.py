@@ -54,8 +54,7 @@ class Generator:
            1 2 * 5 * 8 9
 
        The mixing algorithm creates a smooth transition between the old
-       and new templates by cross-fading the overlapping values from the
-       old and new templates.
+       and new templates by cross-fading the overlapping values.
 
     Yields:
         float: Jitter values.

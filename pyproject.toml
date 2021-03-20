@@ -62,6 +62,7 @@ format = "grouped"
 max_line_length = 79
 show_source = true
 per_file_ignores=[""]
+exclude = ["documentation/steganography/example.ipynb"]
 
 [tool.flakehell.plugins]
 flake8-bandit = ["+*"]
@@ -80,10 +81,6 @@ pep8-naming = ["+*", "-N804"]  # Yes, I mean it; also self for class methods.
 pycodestyle = ["+*", "-E741", "-E203"]
 pyflakes = ["+*"]
 pylint = ["+*"]
-
-[tool.flakehell.exceptions."documentation/**"]
-pycodestyle = ["-*"]
-"*" = ["-*"]
 
 [tool.flakehell.exceptions."tests/*.py"]
 flake8-bandit = ["-S101"]

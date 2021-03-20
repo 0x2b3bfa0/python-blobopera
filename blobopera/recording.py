@@ -16,7 +16,7 @@ class TimedPhoneme(proto.Message):
     """Syllable Timed Phoneme - protocol buffer message.
 
     This class represents a timed phoneme, which, basically, holds a member of
-    the :class`.phoneme.Phoneme` enumeration along with some sort of duration
+    the :class:`.phoneme.Phoneme` enumeration along with some sort of duration
     in an unknown unit of time.
 
     Note:
