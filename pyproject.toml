@@ -81,6 +81,10 @@ pycodestyle = ["+*", "-E741", "-E203"]
 pyflakes = ["+*"]
 pylint = ["+*"]
 
+[tool.flakehell.exceptions."documentation/**"]
+pycodestyle = ["-*"]
+"*" = ["-*"]
+
 [tool.flakehell.exceptions."tests/*.py"]
 flake8-bandit = ["-S101"]
 flake8-builtins = ["-A001"]
