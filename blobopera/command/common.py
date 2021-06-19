@@ -78,7 +78,7 @@ class FillPhoneme(str, Enum):
     U = "U"
 
 
-DefaultFillPhoneme = typer.Option(FillPhoneme.SILENCE, case_sensitive=False)
+DefaultFillPhoneme = typer.Option(FillPhoneme.U, case_sensitive=False)
 
 
 class InterfaceTheme(str, Enum):
