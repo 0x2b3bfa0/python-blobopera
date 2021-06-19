@@ -37,6 +37,9 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 * **[Symphony No. 9 (Beethoven)][13]** ([_source_][15], [_information_][14])
 * **[Ave Maria (Schubert)][20]** ([_source_][21], [_information_][22])
 * **[O Magnum Mysterium (Brian Schmidt)][25]** ([_contributed sample_][26])
+* **[Ave Verum Corpus (Mozart)][27]** ([_contributed sample_][28])
+* **[Cum Sancto Spiritu - Gloria (Vivaldi)][29]** ([_contributed sample_][30])
+
 
 :book:&nbsp;&nbsp;**Want to contribute a new sample? Click [here][24]!**
 
@@ -121,3 +124,7 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 [24]: https://github.com/0x2b3bfa0/python-blobopera/issues/new?labels=recording&template=new-recording.md&title=New+recording%3A+%7Btitle%7D
 [25]: https://g.co/arts/8VGdX1SGjm2Tzyee7
 [26]: https://github.com/0x2b3bfa0/python-blobopera/issues/4
+[27]: https://g.co/arts/FqjgC2WJ6HyC2otv9
+[28]: https://github.com/0x2b3bfa0/python-blobopera/issues/7
+[29]: https://g.co/arts/77abQGtdkV72N3oW7
+[30]: https://github.com/0x2b3bfa0/python-blobopera/issues/8
