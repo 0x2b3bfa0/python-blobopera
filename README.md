@@ -71,11 +71,11 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 
 ## Roadmap
 
-* [X] Publish the package.
-* [ ] Add language-specific phoneme translators.
-* [ ] Improve the phoneme relocation logic.
-* [ ] Write granular unit tests.
-* [ ] Extend the documentation.
+* [X] Publish the package
+* [ ] Add language-specific phoneme translators
+* [ ] Improve the phoneme relocation logic
+* [ ] Write granular unit tests
+* [ ] Extend the documentation
 
 ## Contributing
 
