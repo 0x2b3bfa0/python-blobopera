@@ -63,6 +63,7 @@ format = "grouped"
 max_line_length = 79
 show_source = true
 per_file_ignores=[""]
+extended_default_ignore=[]
 exclude = ["documentation/steganography/example.ipynb"]
 
 [tool.flakehell.plugins]
