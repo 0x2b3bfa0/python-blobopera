@@ -16,6 +16,7 @@ music21 = "^6.3.0"
 requests = "^2.25.1"
 matplotlib = "^3.3.3"
 numpy = "^1.19.4"
+protobuf = "=3.14.0"
 proto-plus = "^1.13.0"
 typer = {extras = ["all"], version = "^0.3.2"}
 colorama = "^0.4.4"
