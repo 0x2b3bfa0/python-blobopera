@@ -204,6 +204,116 @@ class Note(proto.Message):
         note.phonemes = Syllable.to_phonemes(self.syllable)
         return note
 
+class Tempo():
+    """Tempo: speed of notes
+
+    This class contains information of a tempo block.
+
+    Attributes:
+        tempo: tempo = N means 1 minute contains N referent note.
+        referent: duration of a referent note. 1 for a quarter, 2 for a half, etc.
+        offset: The offset of the start of this tempo block.
+    """
+    tempo = 60
+    referent = 1.0
+    offset = 0.0
+    
+    @classmethod
+    def from_tempo(
+        self,
+        tempo_obj: music21.tempo.MetronomeMark
+    ):
+        """Create a Tempo object from music21.tempo.MetronomeMark
+
+        Arguments:
+            tempo_obj = target music21.tempo.MetronomeMark object
+
+        Returns:
+            An instance of Tempo object.
+        """
+        result = self()
+        result.tempo = tempo_obj.number
+        result.referent = tempo_obj.referent.quarterLength
+        result.offset = tempo_obj.offset
+        
+        return result
+
+
+
+class Tempo_List():
+    """Tempo_List: Contains all tempo variation in the whole part
+
+    This class contains all the tempo change in the whole recording.
+
+    Note that since usually only the first part (instrument) contains
+    tempo block, This information should be derived from the first part, 
+    and stored for use in the following parts
+
+    Attributes:
+        tempo_list: A list that contains all the tempo information
+    """
+
+    tempo_list = []
+    _offset_map = {}
+
+    @classmethod
+    def tempos_from_part(
+        self,
+        part: music21.stream.Part
+    ):
+        """Derive tempo information from music21 part
+
+        Arguments:
+            part: music21 Part that contains tempo information
+
+        Returns:
+            An instance of Tempo_List object.
+
+        """
+        tempos = (
+            event
+            for event in part.flat
+            if isinstance(event, music21.tempo.MetronomeMark)
+        )
+
+        result = self()
+        tot_seconds = 0.0 # total seconds till this tempo change
+        for tempo_obj in tempos:
+            tempo = Tempo.from_tempo(tempo_obj)
+            if result.tempo_list:
+                last_tempo = result.tempo_list[-1]
+                # offset = beat number
+                tot_seconds += (tempo.offset - last_tempo.offset) \
+                     * 60 / (last_tempo.tempo * last_tempo.referent)
+            result._offset_map[tempo.offset] = tot_seconds
+            result.tempo_list.append(tempo)
+        
+        # If no tempo info is contained, use tempo=60 as default
+        if not result.tempo_list:
+            result.tempo_list.append(Tempo())
+            result._offset_map[0.0] = 0.0
+
+        return result
+    
+    def offset_to_seconds(self, offset:float) -> float:
+        """Input a offset and return the actual time in seconds
+
+        A Quick function to convert offset into real seconds.
+        Basically offset is measured in beats, rather than second.
+
+        Arguments:
+            offset: the offset to convert.
+
+        Returns:
+            The corresponding second, to be used later.
+        """
+        key_offset = max((o for o in self._offset_map.keys() if o<=offset))
+        current_tempo = next((t for t in self.tempo_list if t.offset==key_offset))
+        seconds = self._offset_map[key_offset] + (offset - current_tempo.offset) \
+            * 60 / (current_tempo.tempo * current_tempo.referent)
+        return seconds
+
+
 
 class Part(proto.Message):
     """Singer Part - protocol buffer message.
@@ -232,6 +342,7 @@ class Part(proto.Message):
         language: Type[Language] = GenericLanguage,
         tempo: float = 1.0,
         fill: Phoneme = Phoneme.SILENCE,
+        tempo_info: Tempo_List = None
     ):
         """Create a Blob Opera part from a music21 part.
 
@@ -240,6 +351,7 @@ class Part(proto.Message):
             language: The absolute start offset of the note, in seconds.
             tempo: The tempo correction factor; 0.5 makes it twice as slow.
             fill: The phoneme to use if none of the notes has lyrics.
+            tempo_info: The tempo information derived from music21 part directly.
 
         Returns:
             An instance of this class containing the basic information required
@@ -313,7 +425,7 @@ class Part(proto.Message):
             # corresponding syllable fragment.
             for index, syllable in enumerate(syllables):
                 duration = current.quarterLength / len(syllables)
-                time = (current.offset + index * duration) / tempo
+                time = tempo_info.offset_to_seconds(current.offset + index * duration) / tempo
 
                 # Try to determine a fallback pitch for filling the decay time
                 # before rests, so there isn't a low hum.
@@ -454,6 +566,9 @@ class Recording(proto.Message):
         if len(parts) != 4:
             raise ValueError("recordings require exactly four tracks")
         try:
+            # derive tempo information from part 1, by default
+            tempo_info = Tempo_List.tempos_from_part(score.parts[0])
+
             recording = Recording(theme=theme)
             for index in parts:
                 part = Part.from_part(
@@ -461,6 +576,7 @@ class Recording(proto.Message):
                     language,
                     tempo,
                     fill,
+                    tempo_info,
                 )
                 recording.parts.append(part)
         except IndexError:
