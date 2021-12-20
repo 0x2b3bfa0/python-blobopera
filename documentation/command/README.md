@@ -336,7 +336,7 @@ return its handle in one of these variants:
 IDENTIFIER: displays the raw recording identifier as
 returned by the server.
 
-LINK: displays a full link to the recording player, inluding the encoded
+LINK: displays a full link to the recording player, including the encoded
 recording identifier as a parameter.
 
 SHORT: displays a shortened version of the aforementioned link.
