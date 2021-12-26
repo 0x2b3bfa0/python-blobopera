@@ -1,0 +1,371 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="blobopera.recording module" href="blobopera.recording.html" /><link rel="prev" title="blobopera.libretto module" href="blobopera.libretto.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2020.12.30.beta24"/>
+        <title>blobopera.phoneme module - blobopera documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=33d2fc4f3f180ec1ffc6524e273e21d7d58cbe49">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=26485485040e7aaf717c13fd0188a5ad2c2deb60">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script defer="defer" src="_static/jquery.js"></script>
+    <script defer="defer" src="_static/underscore.js"></script>
+    <script defer="defer" src="_static/doctools.js"></script>
+    <script defer src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="blobopera.html"><div class="brand">blobopera  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="blobopera.html">
+  
+  
+  <span class="sidebar-brand-text">blobopera  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.backend.html">blobopera.backend package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.backend.backend.html">blobopera.backend.backend module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.command.html">blobopera.command package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.common.html">blobopera.command.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.jitter.html">blobopera.command.jitter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.libretto.html">blobopera.command.libretto module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.recording.html">blobopera.command.recording module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.languages.html">blobopera.languages package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.generic.html">blobopera.languages.generic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.language.html">blobopera.languages.language module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.random.html">blobopera.languages.random module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="blobopera.jitter.html">blobopera.jitter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.libretto.html">blobopera.libretto module</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">blobopera.phoneme module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.recording.html">blobopera.recording module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.theme.html">blobopera.theme module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="module-blobopera.phoneme">
+<span id="blobopera-phoneme-module"></span><h1>blobopera.phoneme module<a class="headerlink" href="#module-blobopera.phoneme" title="Permalink to this headline">¶</a></h1>
+<p>Phonemes used to represent lyrics for singing voice synthesis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This phoneme collection seems to have been designed with Italian or
+Eclesiastical Latin in mind, so it’s quite hard to describe certain sounds
+from other languages, like the German vowels ü, ö and ä.</p>
+</div>
+<dl class="py class">
+<dt id="blobopera.phoneme.Phoneme">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.phoneme.</span></code><code class="sig-name descname"><span class="pre">Phoneme</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.phoneme.Phoneme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.enums.Enum</span></code></p>
+<p>Lyrics phoneme.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The special value <a class="reference internal" href="#blobopera.phoneme.Phoneme.SILENCE" title="blobopera.phoneme.Phoneme.SILENCE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SILENCE</span></code></a> indicates
+the total absence of sound.</p>
+</div>
+<dl class="py method">
+<dt id="blobopera.phoneme.Phoneme.is_consonant">
+<code class="sig-name descname"><span class="pre">is_consonant</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#blobopera.phoneme.Phoneme.is_consonant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the phoneme is a consonant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the phoneme is a consonant or not.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.phoneme.Phoneme.is_silence">
+<code class="sig-name descname"><span class="pre">is_silence</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#blobopera.phoneme.Phoneme.is_silence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the phoneme is a silence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the phoneme is a <a class="reference internal" href="#blobopera.phoneme.Phoneme.SILENCE" title="blobopera.phoneme.Phoneme.SILENCE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SILENCE</span></code></a> or not.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.phoneme.Phoneme.is_vowel">
+<code class="sig-name descname"><span class="pre">is_vowel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#blobopera.phoneme.Phoneme.is_vowel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the phoneme is a vowel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the phoneme is a vowel or not.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.A">
+<code class="sig-name descname"><span class="pre">A</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.A" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.B">
+<code class="sig-name descname"><span class="pre">B</span></code><em class="property"> <span class="pre">=</span> <span class="pre">19</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.C">
+<code class="sig-name descname"><span class="pre">C</span></code><em class="property"> <span class="pre">=</span> <span class="pre">16</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.C" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.CH">
+<code class="sig-name descname"><span class="pre">CH</span></code><em class="property"> <span class="pre">=</span> <span class="pre">15</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.CH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.D">
+<code class="sig-name descname"><span class="pre">D</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.D" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.E">
+<code class="sig-name descname"><span class="pre">E</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.E" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.F">
+<code class="sig-name descname"><span class="pre">F</span></code><em class="property"> <span class="pre">=</span> <span class="pre">17</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.F" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.G">
+<code class="sig-name descname"><span class="pre">G</span></code><em class="property"> <span class="pre">=</span> <span class="pre">21</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.G" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.H">
+<code class="sig-name descname"><span class="pre">H</span></code><em class="property"> <span class="pre">=</span> <span class="pre">20</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.H" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.I">
+<code class="sig-name descname"><span class="pre">I</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.I" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.J">
+<code class="sig-name descname"><span class="pre">J</span></code><em class="property"> <span class="pre">=</span> <span class="pre">18</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.L">
+<code class="sig-name descname"><span class="pre">L</span></code><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.L" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.M">
+<code class="sig-name descname"><span class="pre">M</span></code><em class="property"> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.M" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.N">
+<code class="sig-name descname"><span class="pre">N</span></code><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.N" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.NY">
+<code class="sig-name descname"><span class="pre">NY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">24</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.NY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.O">
+<code class="sig-name descname"><span class="pre">O</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.O" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.P">
+<code class="sig-name descname"><span class="pre">P</span></code><em class="property"> <span class="pre">=</span> <span class="pre">13</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.P" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.QU">
+<code class="sig-name descname"><span class="pre">QU</span></code><em class="property"> <span class="pre">=</span> <span class="pre">22</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.QU" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.R">
+<code class="sig-name descname"><span class="pre">R</span></code><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.S">
+<code class="sig-name descname"><span class="pre">S</span></code><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.S" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.SH">
+<code class="sig-name descname"><span class="pre">SH</span></code><em class="property"> <span class="pre">=</span> <span class="pre">23</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.SH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.SILENCE">
+<code class="sig-name descname"><span class="pre">SILENCE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.SILENCE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.SK">
+<code class="sig-name descname"><span class="pre">SK</span></code><em class="property"> <span class="pre">=</span> <span class="pre">26</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.SK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.T">
+<code class="sig-name descname"><span class="pre">T</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.TZ">
+<code class="sig-name descname"><span class="pre">TZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">28</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.TZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.U">
+<code class="sig-name descname"><span class="pre">U</span></code><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.U" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.V">
+<code class="sig-name descname"><span class="pre">V</span></code><em class="property"> <span class="pre">=</span> <span class="pre">14</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.V" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.Y">
+<code class="sig-name descname"><span class="pre">Y</span></code><em class="property"> <span class="pre">=</span> <span class="pre">25</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.phoneme.Phoneme.Z">
+<code class="sig-name descname"><span class="pre">Z</span></code><em class="property"> <span class="pre">=</span> <span class="pre">27</span></em><a class="headerlink" href="#blobopera.phoneme.Phoneme.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="blobopera.recording.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">blobopera.recording module</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="blobopera.libretto.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">blobopera.libretto module</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/blobopera.phoneme.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+  </body>
+</html>

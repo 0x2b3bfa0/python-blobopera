@@ -1,0 +1,7 @@
+blobopera.languages.language module
+===================================
+
+.. automodule:: blobopera.languages.language
+   :members:
+   :undoc-members:
+   :show-inheritance:

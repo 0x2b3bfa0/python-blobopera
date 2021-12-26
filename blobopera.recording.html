@@ -1,0 +1,559 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="blobopera.theme module" href="blobopera.theme.html" /><link rel="prev" title="blobopera.phoneme module" href="blobopera.phoneme.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2020.12.30.beta24"/>
+        <title>blobopera.recording module - blobopera documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=33d2fc4f3f180ec1ffc6524e273e21d7d58cbe49">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=26485485040e7aaf717c13fd0188a5ad2c2deb60">
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script defer="defer" src="_static/jquery.js"></script>
+    <script defer="defer" src="_static/underscore.js"></script>
+    <script defer="defer" src="_static/doctools.js"></script>
+    <script defer src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="blobopera.html"><div class="brand">blobopera  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="blobopera.html">
+  
+  
+  <span class="sidebar-brand-text">blobopera  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.backend.html">blobopera.backend package</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.backend.backend.html">blobopera.backend.backend module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.command.html">blobopera.command package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.common.html">blobopera.command.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.jitter.html">blobopera.command.jitter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.libretto.html">blobopera.command.libretto module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.command.recording.html">blobopera.command.recording module</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="blobopera.languages.html">blobopera.languages package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.generic.html">blobopera.languages.generic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.language.html">blobopera.languages.language module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blobopera.languages.random.html">blobopera.languages.random module</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="blobopera.jitter.html">blobopera.jitter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.libretto.html">blobopera.libretto module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.phoneme.html">blobopera.phoneme module</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">blobopera.recording module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blobopera.theme.html">blobopera.theme module</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="module-blobopera.recording">
+<span id="blobopera-recording-module"></span><h1>blobopera.recording module<a class="headerlink" href="#module-blobopera.recording" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="blobopera.recording.Note">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.recording.</span></code><code class="sig-name descname"><span class="pre">Note</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.message.Message</span></code></p>
+<p>Part Note - protocol buffer message.</p>
+<p>This class represents a musical note (or rest) with basic attributes like
+pitch, absolute start time and a syllable that defines the vowel formant
+and the following consonants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both <a class="reference internal" href="#blobopera.recording.Note.pitch" title="blobopera.recording.Note.pitch"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pitch</span></code></a> has been declared as a <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> field, but
+it doesn’t contain anything but <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> values.</p>
+</div>
+<dl class="py attribute">
+<dt id="blobopera.recording.Note.time">
+<code class="sig-name descname"><span class="pre">time</span></code><a class="headerlink" href="#blobopera.recording.Note.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute start offset of the note, in seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Note.pitch">
+<code class="sig-name descname"><span class="pre">pitch</span></code><a class="headerlink" href="#blobopera.recording.Note.pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MIDI pitch of the note, where 0 means C-1 and 127
+means G9, in scientific notation and with 12-tone equal
+temperament.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Note.syllable">
+<code class="sig-name descname"><span class="pre">syllable</span></code><a class="headerlink" href="#blobopera.recording.Note.syllable" title="Permalink to this definition">¶</a></dt>
+<dd><p>The syllable object holding the phonemes that
+should be played along the note.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#blobopera.recording.Syllable" title="blobopera.recording.Syllable">Syllable</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Note.controlled">
+<code class="sig-name descname"><span class="pre">controlled</span></code><a class="headerlink" href="#blobopera.recording.Note.controlled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown variable that requires more reverse
+engineering, doesn’t seem to have any noticeable effect on the
+sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Note.from_note">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_note</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">music21.note.GeneralNote</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phonemes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme"><span class="pre">blobopera.phoneme.Phoneme</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback_pitch</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">music21.pitch.Pitch</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Note.from_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Blob Opera note from a music21 note or rest.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When providing a chord, this function will automatically select the
+top note and discard the others.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>note</strong> – A music21 note, chord or rest.</p></li>
+<li><p><strong>time</strong> – The absolute start offset of the note, in seconds.</p></li>
+<li><p><strong>phonemes</strong> – The phonemes that define the note lyrics fragment.</p></li>
+<li><p><strong>fallback_pitch</strong> – The pitch to use for rests. Using the default value
+will abruply stop the vocal generation and cause a short low
+hum prior to the rest, so it’s better to use the pitch from the
+previous note to achieve a better decay.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An instance of this class containing the basic information required
+to play the given note.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the provided <code class="xref py py-obj docutils literal notranslate"><span class="pre">music21.note.GeneralNote</span></code> is
+    not a <code class="xref py py-obj docutils literal notranslate"><span class="pre">music21.note.Note</span></code>, a
+    <code class="xref py py-obj docutils literal notranslate"><span class="pre">music21.note.Rest</span></code> nor a <code class="xref py py-obj docutils literal notranslate"><span class="pre">music21.note.Chord</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Note.to_note">
+<code class="sig-name descname"><span class="pre">to_note</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">music21.note.GeneralNote</span><a class="headerlink" href="#blobopera.recording.Note.to_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the equivalent music21 note for this Blob Opera note.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A music21 note with an extra ad-hoc attribute holding all the
+phonemes so they can be processed later and converted to strings.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="blobopera.recording.Part">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.recording.</span></code><code class="sig-name descname"><span class="pre">Part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.message.Message</span></code></p>
+<p>Singer Part - protocol buffer message.</p>
+<p>This class represents the “part” that should be interpreted by a single
+“blob” singer, including timing, pitches and lyrics.</p>
+<dl class="py attribute">
+<dt id="blobopera.recording.Part.notes">
+<code class="sig-name descname"><span class="pre">notes</span></code><a class="headerlink" href="#blobopera.recording.Part.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the notes that should be played by the
+“blob” singer, including timing, pitches and lyrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Sequence[<a class="reference internal" href="#blobopera.recording.Note" title="blobopera.recording.Note">Note</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Part.start">
+<code class="sig-name descname"><span class="pre">start</span></code><a class="headerlink" href="#blobopera.recording.Part.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>The consonants that should be emitted prior
+to the first note (vowel) in the part. Due to the nature of the
+data model, there isn’t any other way of specifying the start
+consonant as part of the first note in the song.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Sequence[<a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme">Phoneme</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Part.from_part">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">part:</span> <span class="pre">music21.stream.Part</span></em>, <em class="sig-param"><span class="pre">language:</span> <span class="pre">Type[blobopera.languages.language.Language]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'blobopera.languages.generic.GenericLanguage'&gt;</span></em>, <em class="sig-param"><span class="pre">tempo:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.0</span></em>, <em class="sig-param"><span class="pre">fill:</span> <span class="pre">blobopera.phoneme.Phoneme</span> <span class="pre">=</span> <span class="pre">&lt;Phoneme.SILENCE:</span> <span class="pre">4&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Part.from_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Blob Opera part from a music21 part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>part</strong> – The music21 part.</p></li>
+<li><p><strong>language</strong> – The absolute start offset of the note, in seconds.</p></li>
+<li><p><strong>tempo</strong> – The tempo correction factor; 0.5 makes it twice as slow.</p></li>
+<li><p><strong>fill</strong> – The phoneme to use if none of the notes has lyrics.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An instance of this class containing the basic information required
+to play the given part.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Part.to_part">
+<code class="sig-name descname"><span class="pre">to_part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> → <span class="pre">music21.stream.Part</span><a class="headerlink" href="#blobopera.recording.Part.to_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the equivalent music21 part for this Blob Opera part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – The name of the part, e.g. “Soprano”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A music21 part with all the notes in this Blob Opera part, along
+with the raw phonemes as lyrics, in uppercase.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="blobopera.recording.Recording">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.recording.</span></code><code class="sig-name descname"><span class="pre">Recording</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Recording" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.message.Message</span></code></p>
+<p>Blob Opera Recording - protocol buffer message.</p>
+<p>This class represents a recording as per the Blob Opera parlance.
+Recordings hold all the required information to “perform” a piece of music
+for each “blob” singer (part).</p>
+<dl class="py attribute">
+<dt id="blobopera.recording.Recording.theme">
+<code class="sig-name descname"><span class="pre">theme</span></code><a class="headerlink" href="#blobopera.recording.Recording.theme" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user interface theme to use when displaying the
+blobs in the recording player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="blobopera.theme.html#blobopera.theme.Theme" title="blobopera.theme.Theme">Theme</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Recording.parts">
+<code class="sig-name descname"><span class="pre">parts</span></code><a class="headerlink" href="#blobopera.recording.Recording.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>All the four parts of the recording: soprano,
+alto, tenor and bass; in that order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Sequence[<a class="reference internal" href="#blobopera.recording.Part" title="blobopera.recording.Part">Part</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Recording.from_score">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">score:</span> <span class="pre">music21.stream.Score</span></em>, <em class="sig-param"><span class="pre">theme:</span> <span class="pre">blobopera.theme.Theme</span> <span class="pre">=</span> <span class="pre">&lt;Theme.NORMAL:</span> <span class="pre">0&gt;</span></em>, <em class="sig-param"><span class="pre">language:</span> <span class="pre">Type[blobopera.languages.language.Language]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'blobopera.languages.generic.GenericLanguage'&gt;</span></em>, <em class="sig-param"><span class="pre">tempo:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.0</span></em>, <em class="sig-param"><span class="pre">parts:</span> <span class="pre">Tuple[int]</span> <span class="pre">=</span> <span class="pre">(0</span></em>, <em class="sig-param"><span class="pre">0</span></em>, <em class="sig-param"><span class="pre">0</span></em>, <em class="sig-param"><span class="pre">0)</span></em>, <em class="sig-param"><span class="pre">fill:</span> <span class="pre">blobopera.phoneme.Phoneme</span> <span class="pre">=</span> <span class="pre">&lt;Phoneme.SILENCE:</span> <span class="pre">4&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Recording.from_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Blob Opera recording from a music21 score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score</strong> – A music21 score with one or more parts.</p></li>
+<li><p><strong>theme</strong> – The user interface theme for the Blob Opera experiment.</p></li>
+<li><p><strong>language</strong> – The language class used for converting lyrics to
+language-agnostic phonemes.</p></li>
+<li><p><strong>tempo</strong> – The tempo factor to use when interpreting the score, where
+2.0 would mean twice as quick and 0.5 twice as slow.</p></li>
+<li><p><strong>parts</strong> – The indexes for the four parts that should be used as
+soprano, alto, tenor and bass, in that order. Indexes use the
+same notation as Python indexes, where 0 means the topmost
+part and -2 the penultimate (second from the bottom) part.</p></li>
+<li><p><strong>fill</strong> – The phoneme used to fill parts that don’t have lyrics.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An instance of this class containing a Blob Opera recording
+representing the provided score.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the part index tuple contains more or less than
+    the expected four elements, as there are exactly four blob
+    singers and producing a different number of parts could crash
+    the player.</p></li>
+<li><p><strong>IndexError</strong> – If one of the part indexes is out of bounds when
+    retrieving a part from the input <code class="xref py py-data docutils literal notranslate"><span class="pre">score</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Recording.to_score">
+<code class="sig-name descname"><span class="pre">to_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> → <span class="pre">music21.stream.Score</span><a class="headerlink" href="#blobopera.recording.Recording.to_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the equivalent music21 score for this Blob Opera recording.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – The recording title, shown in the heading of the score when
+exported to compatible formats, like MusicXML.</p></li>
+<li><p><strong>composer</strong> – The composer name, shown in the bottom-right corner of
+the heading of the score; idem.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A music21 score with an approximate
+representation of the recording.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="blobopera.recording.Syllable">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.recording.</span></code><code class="sig-name descname"><span class="pre">Syllable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Syllable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.message.Message</span></code></p>
+<p>Note Syllable - protocol buffer message.</p>
+<p>This class represents a syllable consisting of a vowel followed by a suffix
+formed by one or more consonants. Syllables not adhering to these rules
+may lead to unexpected sound and articulation issues.</p>
+<dl class="py attribute">
+<dt id="blobopera.recording.Syllable.vowel">
+<code class="sig-name descname"><span class="pre">vowel</span></code><a class="headerlink" href="#blobopera.recording.Syllable.vowel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The initial vowel that will
+support the pitch of the note.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme">Phoneme</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.Syllable.suffix">
+<code class="sig-name descname"><span class="pre">suffix</span></code><a class="headerlink" href="#blobopera.recording.Syllable.suffix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The consonants that may
+follow the specified vowel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Sequence[<a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme">Phoneme</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Syllable.from_phonemes">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_phonemes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phonemes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme"><span class="pre">blobopera.phoneme.Phoneme</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.Syllable.from_phonemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a syllable with a list of phonemes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phonemes</strong> – The phonemes to include in this syllable.</p></li>
+<li><p><strong>duration</strong> – The duration parameter for each of the created
+timed phonemes; the first phoneme will have this duration,
+and all the subsequent ones will have half the specified value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An instance of this class containing all the given phonemes.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the first phoneme is a consonant.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="blobopera.recording.Syllable.to_phonemes">
+<code class="sig-name descname"><span class="pre">to_phonemes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme"><span class="pre">blobopera.phoneme.Phoneme</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#blobopera.recording.Syllable.to_phonemes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract all the phonemes from this syllable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>All the phonemes from this syllable, in the same order that would
+be used to utter them.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="blobopera.recording.TimedPhoneme">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">blobopera.recording.</span></code><code class="sig-name descname"><span class="pre">TimedPhoneme</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unknown_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#blobopera.recording.TimedPhoneme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proto.message.Message</span></code></p>
+<p>Syllable Timed Phoneme - protocol buffer message.</p>
+<p>This class represents a timed phoneme, which, basically, holds a member of
+the <a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme"><code class="xref py py-class docutils literal notranslate"><span class="pre">phoneme.Phoneme</span></code></a> enumeration along with some sort of duration
+in an unknown unit of time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not to be mistaken with <a class="reference internal" href="blobopera.libretto.html#blobopera.libretto.TimedPhoneme" title="blobopera.libretto.TimedPhoneme"><code class="xref py py-class docutils literal notranslate"><span class="pre">libretto.TimedPhoneme</span></code></a>, which
+serves to a completely different purpose and has different fields.</p>
+</div>
+<dl class="py attribute">
+<dt id="blobopera.recording.TimedPhoneme.phoneme">
+<code class="sig-name descname"><span class="pre">phoneme</span></code><a class="headerlink" href="#blobopera.recording.TimedPhoneme.phoneme" title="Permalink to this definition">¶</a></dt>
+<dd><p>The phoneme to utter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="blobopera.phoneme.html#blobopera.phoneme.Phoneme" title="blobopera.phoneme.Phoneme">Phoneme</a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="blobopera.recording.TimedPhoneme.duration">
+<code class="sig-name descname"><span class="pre">duration</span></code><a class="headerlink" href="#blobopera.recording.TimedPhoneme.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duration, whose purpose is yet unknown. Empirically,
+changing this value to anything else than 0.1 for vowels may cause
+blobs to sing out of tune.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="blobopera.theme.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">blobopera.theme module</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="blobopera.phoneme.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">blobopera.phoneme module</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/blobopera.recording.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+  </body>
+</html>

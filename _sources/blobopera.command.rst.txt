@@ -1,0 +1,21 @@
+blobopera.command package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   blobopera.command.common
+   blobopera.command.jitter
+   blobopera.command.libretto
+   blobopera.command.recording
+
+Module contents
+---------------
+
+.. automodule:: blobopera.command
+   :members:
+   :undoc-members:
+   :show-inheritance:

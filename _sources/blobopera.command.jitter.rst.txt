@@ -1,0 +1,7 @@
+blobopera.command.jitter module
+===============================
+
+.. automodule:: blobopera.command.jitter
+   :members:
+   :undoc-members:
+   :show-inheritance:

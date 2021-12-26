@@ -1,0 +1,7 @@
+blobopera.recording module
+==========================
+
+.. automodule:: blobopera.recording
+   :members:
+   :undoc-members:
+   :show-inheritance:

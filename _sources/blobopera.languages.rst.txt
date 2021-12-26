@@ -1,0 +1,20 @@
+blobopera.languages package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   blobopera.languages.generic
+   blobopera.languages.language
+   blobopera.languages.random
+
+Module contents
+---------------
+
+.. automodule:: blobopera.languages
+   :members:
+   :undoc-members:
+   :show-inheritance:

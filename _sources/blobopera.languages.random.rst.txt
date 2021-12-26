@@ -1,0 +1,7 @@
+blobopera.languages.random module
+=================================
+
+.. automodule:: blobopera.languages.random
+   :members:
+   :undoc-members:
+   :show-inheritance:

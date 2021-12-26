@@ -1,0 +1,7 @@
+blobopera.theme module
+======================
+
+.. automodule:: blobopera.theme
+   :members:
+   :undoc-members:
+   :show-inheritance:

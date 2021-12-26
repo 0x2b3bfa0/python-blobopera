@@ -1,0 +1,32 @@
+blobopera package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   blobopera.backend
+   blobopera.command
+   blobopera.languages
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   blobopera.jitter
+   blobopera.libretto
+   blobopera.phoneme
+   blobopera.recording
+   blobopera.theme
+
+Module contents
+---------------
+
+.. automodule:: blobopera
+   :members:
+   :undoc-members:
+   :show-inheritance:

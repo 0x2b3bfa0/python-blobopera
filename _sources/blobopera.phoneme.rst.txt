@@ -1,0 +1,7 @@
+blobopera.phoneme module
+========================
+
+.. automodule:: blobopera.phoneme
+   :members:
+   :undoc-members:
+   :show-inheritance:

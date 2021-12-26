@@ -1,0 +1,18 @@
+blobopera.backend package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   blobopera.backend.backend
+
+Module contents
+---------------
+
+.. automodule:: blobopera.backend
+   :members:
+   :undoc-members:
+   :show-inheritance:

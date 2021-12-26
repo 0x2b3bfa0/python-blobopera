@@ -1,0 +1,7 @@
+blobopera.command.common module
+===============================
+
+.. automodule:: blobopera.command.common
+   :members:
+   :undoc-members:
+   :show-inheritance:

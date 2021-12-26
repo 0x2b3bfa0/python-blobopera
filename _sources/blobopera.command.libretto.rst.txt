@@ -1,0 +1,7 @@
+blobopera.command.libretto module
+=================================
+
+.. automodule:: blobopera.command.libretto
+   :members:
+   :undoc-members:
+   :show-inheritance:
