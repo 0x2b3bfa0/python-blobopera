@@ -1,14 +1,8 @@
 <h1 align="center">Blob Opera Toolkit</h1>
 
 <p align="center">
-    <a href="https://github.com/0x2b3bfa0/python-blobopera/actions">
-        <img alt="test" src="https://github.com/0x2b3bfa0/python-blobopera/workflows/test/badge.svg?branch=main">
-    </a>
-    <a href="https://github.com/0x2b3bfa0/python-blobopera/actions">
-        <img alt="lint" src="https://github.com/0x2b3bfa0/python-blobopera/workflows/lint/badge.svg?branch=main">
-    </a>
-    <a href="https://github.com/0x2b3bfa0/python-blobopera/actions">
-        <img alt="lint" src="https://github.com/0x2b3bfa0/python-blobopera/workflows/coverage/badge.svg?branch=main">
+    <a href="https://github.com/0x2b3bfa0/python-blobopera/actions/workflows/test.yml">
+        <img alt="test" src="https://github.com/0x2b3bfa0/python-blobopera/actions/workflows/test.yml/badge.svg?branch=main">
     </a>
     <a href="https://pypi.org/project/blobopera">
         <img alt="package" src="https://badge.fury.io/py/blobopera.svg">
