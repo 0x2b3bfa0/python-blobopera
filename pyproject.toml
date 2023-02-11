@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "blobopera"
-version = "1.0.2"
+version = "1.0.3"
 description = "Unofficial toolkit for Google Arts & Culture Blob Opera"
 authors = ["Helio Machado <0x2b3bfa0@googlemail.com>"]
 maintainers = ["Helio Machado <0x2b3bfa0@googlemail.com>"]
