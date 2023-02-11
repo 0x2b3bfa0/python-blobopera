@@ -1,6 +1,7 @@
 syntax = "proto2";
 
 enum Theme {
-  Normal  = 0;
-  Festive = 1;
+  Normal = 0;
+  Christmas = 1;
+  NewYears = 2;
 }

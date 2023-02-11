@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+enum Location {
+  BlobperaHouse = 0;
+  London = 1;
+  NewYork = 2;
+  Hackney = 3;
+  Paris = 4;
+  CapeTown = 5;
+  MexicoCity = 6;
+  Seoul = 7;
+}

@@ -6,6 +6,7 @@ import proto  # type: ignore
 from more_itertools import split_before, windowed_complete
 
 from .languages import GenericLanguage, Language
+from .location import Location
 from .phoneme import Phoneme
 from .theme import Theme
 
@@ -413,6 +414,7 @@ class Recording(proto.Message):
 
     theme = proto.Field(Theme, number=1, optional=True)
     parts = proto.RepeatedField(Part, number=2, optional=True)
+    location = proto.Field(Location, number=3, optional=True)
 
     @classmethod
     def from_score(
@@ -423,6 +425,7 @@ class Recording(proto.Message):
         tempo: float = 1.0,
         parts: Tuple[int] = (0, 0, 0, 0),
         fill: Phoneme = Phoneme.SILENCE,
+        location: Location = Location.BLOBPERAHOUSE,
     ):
         """Create a Blob Opera recording from a music21 score.
 
@@ -454,7 +457,7 @@ class Recording(proto.Message):
         if len(parts) != 4:
             raise ValueError("recordings require exactly four tracks")
         try:
-            recording = Recording(theme=theme)
+            recording = Recording(theme=theme, location=location)
             for index in parts:
                 part = Part.from_part(
                     score.parts[index],

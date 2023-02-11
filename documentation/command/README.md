@@ -302,6 +302,9 @@ Options:
     0.5 would slow down the piece to half its original speed, and 2.0
     would make it twice as quicker.
 
+    Location: the location (i.e. background image) of the recording, like
+    e.g. Seoul or London.
+
 **Usage**:
 
 ```console
@@ -316,9 +319,10 @@ $ blobopera recording import [OPTIONS] INPUT OUTPUT
 **Options**:
 
 * `--format [BINARY|JSON]`: [default: BINARY]
-* `--theme [NORMAL|FESTIVE]`: [default: NORMAL]
+* `--theme [NORMAL|CHRISTMAS|NEWYEARS]`: [default: NORMAL]
 * `--language [GENERIC|RANDOM]`: [default: GENERIC]
-* `--fill [SILENCE|A|E|I|O|U]`: [default: SILENCE]
+* `--fill [SILENCE|A|E|I|O|U]`: [default: U]
+* `--location [BLOBPERAHOUSE|LONDON|NEWYORK|HACKNEY|PARIS|CAPETOWN|MEXICOCITY|SEOUL]`: [default: BLOBPERAHOUSE]
 * `--soprano-part INTEGER`: [default: 0]
 * `--alto-part INTEGER`: [default: 1]
 * `--tenor-part INTEGER`: [default: -2]

@@ -83,11 +83,28 @@ DefaultFillPhoneme = typer.Option(FillPhoneme.U, case_sensitive=False)
 
 class InterfaceTheme(str, Enum):
     NORMAL = "NORMAL"
-    FESTIVE = "FESTIVE"
+    CHRISTMAS = "CHRISTMAS"
+    NEWYEARS = "NEWYEARS"
 
 
 DefaultInterfaceTheme = typer.Option(
     InterfaceTheme.NORMAL, case_sensitive=False
+)
+
+
+class InterfaceLocation(str, Enum):
+    BLOBPERAHOUSE = "BLOBPERAHOUSE"
+    LONDON = "LONDON"
+    NEWYORK = "NEWYORK"
+    HACKNEY = "HACKNEY"
+    PARIS = "PARIS"
+    CAPETOWN = "CAPETOWN"
+    MEXICOCITY = "MEXICOCITY"
+    SEOUL = "SEOUL"
+
+
+DefaultInterfaceLocation = typer.Option(
+    InterfaceLocation.BLOBPERAHOUSE, case_sensitive=False
 )
 
 

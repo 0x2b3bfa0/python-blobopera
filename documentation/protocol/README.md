@@ -25,6 +25,9 @@ purposes.
 * **`Theme`** contains a list of valid themes; the festive theme adds
   falling snow and a red fluffy hat for each blob.
 
+* **`Location`** contains a list of valid locations; i.e. blurry background
+  pictures of emblematic places.
+
 ## Usage
 
 ```bash

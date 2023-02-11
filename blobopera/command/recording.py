@@ -6,6 +6,7 @@ import music21  # type: ignore
 import typer
 
 from ..languages import GenericLanguage, RandomLanguage
+from ..location import Location
 from ..phoneme import Phoneme
 from ..recording import Recording
 from ..theme import Theme
@@ -87,6 +88,7 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
     theme: common.InterfaceTheme = common.DefaultInterfaceTheme,
     language: common.PhonemeLanguage = common.DefaultPhonemeLanguage,
     fill: common.FillPhoneme = common.DefaultFillPhoneme,
+    location: common.InterfaceLocation = common.DefaultInterfaceLocation,
     soprano_part: int = 0,
     alto_part: int = 1,
     tenor_part: int = -2,
@@ -121,6 +123,9 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
         Tempo: this value modifies the global tempo by the specified amount;
         0.5 would slow down the piece to half its original speed, and 2.0
         would make it twice as quicker.
+
+        Location: the location (i.e. background image) of the recording, like
+        e.g. Seoul or London.
     """
 
     if language == common.PhonemeLanguage.GENERIC:
@@ -144,6 +149,7 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
         tempo=tempo,
         parts=parts,
         fill=Phoneme[fill.value],
+        location=Location[location.value]
     )
 
     output.write(

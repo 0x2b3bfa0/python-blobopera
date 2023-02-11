@@ -12,9 +12,14 @@ class Theme(proto.Enum):
     """Graphical user interface theme.
 
     Note:
-        The :py:attr:`FESTIVE` theme adds lots of tiny falling snowflakes
+        The :py:attr:`CHRISTMAS` theme adds lots of tiny falling snowflakes
         in the background and Santa Claus hats over the singers.
+
+        The :py:attr:`NEWYEARS` theme adds lots of tiny falling snowflakes
+        in the background, party hats over the singers and a big aluminum
+        balloon with the year on it hovering their heads.
     """
 
     NORMAL = 0
-    FESTIVE = 1
+    CHRISTMAS = 1
+    NEWYEARS = 2
