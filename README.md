@@ -33,6 +33,7 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 * **[O Magnum Mysterium (Brian Schmidt)][25]** ([_contributed sample_][26])
 * **[Ave Verum Corpus (Mozart)][27]** ([_contributed sample_][28])
 * **[Cum Sancto Spiritu - Gloria (Vivaldi)][29]** ([_contributed sample_][30])
+* **[Bohemian Rhapsody (Queen)][31]** ([_contributed sample_][32])
 
 
 :book:&nbsp;&nbsp;**Want to contribute a new sample? Click [here][24]!**
@@ -122,3 +123,5 @@ real lyrics, loosely inspired by [OverlappingElvis/blob-opera-midi][2].
 [28]: https://github.com/0x2b3bfa0/python-blobopera/issues/7
 [29]: https://g.co/arts/77abQGtdkV72N3oW7
 [30]: https://github.com/0x2b3bfa0/python-blobopera/issues/8
+[31]: https://g.co/arts/NTkrPLNfAwpRQejY7
+[32]: mailto:rogercloud10@gmail.com
