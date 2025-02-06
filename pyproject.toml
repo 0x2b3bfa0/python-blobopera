@@ -32,12 +32,11 @@ poethepoet = "^0.9.0"
 furo = "^2020.12.30-beta.24"
 Sphinx = "^3.4.3"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
 [tool.poetry.scripts]
 blobopera = "blobopera.command:application"
+
+[tool.ruff.lint]
+extend-select = ["I"]
 
 [tool.coverage.run]
 omit = [".*", "*/site-packages/*"]
@@ -54,3 +53,7 @@ document-module-build = "sphinx-build -Wb html -c documentation -d documentation
 document-module = ["document-module-generate", "document-module-build"]
 document = ["document-command", "document-module"]
 all = ["coverage", "document"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
