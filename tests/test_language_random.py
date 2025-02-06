@@ -1,6 +1,11 @@
 import music21  # type: ignore
 import pytest  # type: ignore
 
+from blobopera.languages import GenericLanguage, RandomLanguage
+from blobopera.phoneme import Phoneme
+
+from .fixture_note_lyric_events import foo_events, foo_none_events
+
 from blobopera.languages import RandomLanguage
 
 
