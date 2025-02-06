@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest  # type: ignore
 import responses  # type: ignore
 
+from .fixture_data_directory import data_directory
 
 @pytest.fixture()
 def mocked_static_server(data_directory):
