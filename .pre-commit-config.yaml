@@ -6,6 +6,7 @@ repos:
     - id: check-toml
     - id: check-yaml
     - id: end-of-file-fixer
+      exclude: ^tests/.*\.data/
     - id: mixed-line-ending
     - id: trailing-whitespace
 - repo: https://github.com/python-poetry/poetry

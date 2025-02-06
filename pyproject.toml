@@ -37,7 +37,6 @@ blobopera = "blobopera.command:application"
 
 [tool.ruff]
 line-length = 79
-extend-exclude = ["tests/*.data/*.json"]
 
 [tool.ruff.lint]
 extend-select = ["I"]
