@@ -1,5 +1,8 @@
 import filecmp
 
+from .fixture_data_directory import data_directory
+from .fixture_invoke_command import invoke_command
+from .fixture_mocked_static_server import mocked_static_server
 
 def test_download(data_directory, invoke_command, mocked_static_server):
     """Test if the download mechanism works correctly."""
