@@ -4,6 +4,7 @@ import pytest  # type: ignore
 from blobopera.languages import GenericLanguage
 from blobopera.phoneme import Phoneme
 
+from .fixture_note_lyric_events import foo_events, none_events
 
 def test_generic_language(foo_events):
     language = GenericLanguage(music21.stream.Part(), strict=False)
