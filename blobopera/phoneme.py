@@ -5,6 +5,7 @@ Note:
     Eclesiastical Latin in mind, so it's quite hard to describe certain sounds
     from other languages, like the German vowels ü, ö and ä.
 """
+
 import proto  # type: ignore
 
 __protobuf__ = proto.module(package=__name__)
@@ -18,10 +19,10 @@ class Phoneme(proto.Enum):
         the total absence of sound.
     """
 
-    I = 0
+    I = 0  # noqa: E741
     A = 1
     E = 2
-    O = 3
+    O = 3  # noqa: E741
     SILENCE = 4
     R = 5
     N = 6

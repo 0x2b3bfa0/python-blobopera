@@ -83,8 +83,7 @@ class Syllable(proto.Message):
         # suffix phonemes should have half the duration of the vowel,
         # so we divide all the durations and fix the vowel later.
         timed_phonemes = [
-            TimedPhoneme(phoneme=phoneme, duration=duration / 2)
-            for phoneme in phonemes
+            TimedPhoneme(phoneme=phoneme, duration=duration / 2) for phoneme in phonemes
         ]
 
         new = self(vowel=timed_phonemes[0], suffix=timed_phonemes[1:])
@@ -125,13 +124,9 @@ class Note(proto.Message):
             sound.
     """
 
-    time = proto.Field(
-        proto.FLOAT, number=1, optional=True, json_name="timeSeconds"
-    )
+    time = proto.Field(proto.FLOAT, number=1, optional=True, json_name="timeSeconds")
     pitch = proto.Field(proto.FLOAT, number=2, optional=True)
-    syllable = proto.Field(
-        Syllable, number=3, optional=True, json_name="librettoChunk"
-    )
+    syllable = proto.Field(Syllable, number=3, optional=True, json_name="librettoChunk")
     controlled = proto.Field(proto.BOOL, number=4, optional=True)
 
     @classmethod
@@ -247,9 +242,7 @@ class Part(proto.Message):
             to play the given part.
         """
         notes = (
-            event
-            for event in part.flat
-            if isinstance(event, music21.note.GeneralNote)
+            event for event in part.flat if isinstance(event, music21.note.GeneralNote)
         )
 
         result = self()
@@ -367,9 +360,7 @@ class Part(proto.Message):
         # class; we create it on the fly from ``Note.to_note()`` instead.
         for note in notes:
             lyric = (
-                phoneme.name
-                for phoneme in note.phonemes
-                if not phoneme.is_silence()
+                phoneme.name for phoneme in note.phonemes if not phoneme.is_silence()
             )
             note.lyric = "".join(lyric) or None
 
@@ -471,9 +462,7 @@ class Recording(proto.Message):
         else:
             return recording
 
-    def to_score(
-        self, title: str = "", composer: str = ""
-    ) -> music21.stream.Score:
+    def to_score(self, title: str = "", composer: str = "") -> music21.stream.Score:
         """Extract the equivalent music21 score for this Blob Opera recording.
 
         Arguments:

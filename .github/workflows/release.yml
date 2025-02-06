@@ -14,7 +14,7 @@ jobs:
         python-version: '3.10'
     - run: poetry install
     - uses: tschm/token-mint-action@v1.0.3
-      id: mint          
+      id: mint
     - run: poetry publish --build -u __token__ -p $PYPI_TOKEN
       env:
         PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}

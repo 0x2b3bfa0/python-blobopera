@@ -3,6 +3,7 @@
 This language module aims to achieve a good enough universal phoneme conversion
 if there isn't a better alternative.
 """
+
 import re
 import unicodedata
 from typing import List

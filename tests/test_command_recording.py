@@ -1,9 +1,5 @@
 import filecmp
 
-from .fixture_data_directory import data_directory
-from .fixture_invoke_command import invoke_command
-from .fixture_mocked_backend import mocked_backend
-
 
 def test_upload_download(data_directory, invoke_command, mocked_backend):
     """Test if the upload and download mechanisms work correctly."""
@@ -58,9 +54,7 @@ def test_import(data_directory, invoke_command):
         input = data_directory / "recording.musicxml"
         output = data_directory / f"recording.output.{format}"
         data_directory / "recording.binary"
-        result = invoke_command(
-            "recording", "import", "--format=binary", input, output
-        )
+        result = invoke_command("recording", "import", "--format=binary", input, output)
         assert result.exit_code == 0
         assert not result.exception
         assert not result.output

@@ -12,9 +12,7 @@ def generate_windowed_events(lyrics: list):
     # FIXME: https://github.com/cuthbertLab/music21/pull/769 pending.
     # notes = [music21.note.Note(lyric=lyric) for lyric in lyrics]  # noqa E800
     notes = [
-        music21.note.Note()
-        if lyric is None
-        else music21.note.Note(lyric=lyric)
+        music21.note.Note() if lyric is None else music21.note.Note(lyric=lyric)
         for lyric in lyrics
     ]
     for before, current, after in more_itertools.windowed_complete(notes, 1):

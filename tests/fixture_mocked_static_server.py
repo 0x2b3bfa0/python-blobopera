@@ -5,8 +5,6 @@ from pathlib import Path
 import pytest  # type: ignore
 import responses  # type: ignore
 
-from .fixture_data_directory import data_directory
-
 
 @pytest.fixture()
 def mocked_static_server(data_directory):
@@ -27,9 +25,7 @@ class Static:
         """Initialize the mock server."""
         self.mock.add_callback(
             self.mock.GET,
-            re.compile(
-                f"https?://{re.escape(self.static_host)}/blob-opera/.*"
-            ),
+            re.compile(f"https?://{re.escape(self.static_host)}/blob-opera/.*"),
             callback=self.static,
         )
 

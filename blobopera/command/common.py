@@ -3,6 +3,7 @@
 This file provides data import functions and some shared defaults and
 enumerations used by choice-like subcommand options.
 """
+
 from enum import Enum
 from typing import Type
 
@@ -54,9 +55,7 @@ class RecordingHandle(str, Enum):
     SHORT = "SHORT"
 
 
-DefaultRecordingHandle = typer.Option(
-    RecordingHandle.SHORT, case_sensitive=False
-)
+DefaultRecordingHandle = typer.Option(RecordingHandle.SHORT, case_sensitive=False)
 
 
 class PhonemeLanguage(str, Enum):
@@ -64,17 +63,15 @@ class PhonemeLanguage(str, Enum):
     RANDOM = "RANDOM"
 
 
-DefaultPhonemeLanguage = typer.Option(
-    PhonemeLanguage.GENERIC, case_sensitive=False
-)
+DefaultPhonemeLanguage = typer.Option(PhonemeLanguage.GENERIC, case_sensitive=False)
 
 
 class FillPhoneme(str, Enum):
     SILENCE = "SILENCE"
     A = "A"
     E = "E"
-    I = "I"
-    O = "O"
+    I = "I"  # noqa: E741
+    O = "O"  # noqa: E741
     U = "U"
 
 
@@ -87,9 +84,7 @@ class InterfaceTheme(str, Enum):
     NEWYEARS = "NEWYEARS"
 
 
-DefaultInterfaceTheme = typer.Option(
-    InterfaceTheme.NORMAL, case_sensitive=False
-)
+DefaultInterfaceTheme = typer.Option(InterfaceTheme.NORMAL, case_sensitive=False)
 
 
 class InterfaceLocation(str, Enum):
@@ -135,9 +130,7 @@ def parse(data: bytes, message: Type[Message]) -> Message:
         return result
 
 
-def convert(
-    input: bytes, format: ConvertFormat, message: Type[Message]
-) -> bytes:
+def convert(input: bytes, format: ConvertFormat, message: Type[Message]) -> bytes:
     """Convert a Protocol Buffer message between its representations.
 
     Arguments:

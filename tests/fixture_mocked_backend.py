@@ -25,9 +25,7 @@ class Backend:
     data_host: str = "data.example.com"
 
     def __post_init__(self):
-        self.shortener = Shortener(
-            self.public_host, self.shortener_host, self.mock
-        )
+        self.shortener = Shortener(self.public_host, self.shortener_host, self.mock)
         self.storage = Storage(self.private_host, self.data_host, self.mock)
         self.mock.add(
             self.mock.GET,
@@ -40,9 +38,7 @@ class Backend:
 class Shortener:
     """Link shortener backend mock."""
 
-    def __init__(
-        self, control_host: str, link_host: str, mock: responses.RequestsMock
-    ):
+    def __init__(self, control_host: str, link_host: str, mock: responses.RequestsMock):
         """Initialize the backend with a "responses" mock and host names."""
         self.mock: responses.RequestsMock = mock
         self.control_host: str = control_host
@@ -51,9 +47,7 @@ class Shortener:
 
         self.mock.add_callback(
             self.mock.GET,
-            re.compile(
-                f"https?://{re.escape(self.control_host)}/api/shortUrl"
-            ),
+            re.compile(f"https?://{re.escape(self.control_host)}/api/shortUrl"),
             callback=self.shorten,
         )
         self.mock.add_callback(

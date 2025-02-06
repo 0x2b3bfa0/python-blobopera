@@ -1,10 +1,8 @@
 import music21  # type: ignore
 import pytest  # type: ignore
 
-from blobopera.languages import GenericLanguage, RandomLanguage
+from blobopera.languages import GenericLanguage
 from blobopera.phoneme import Phoneme
-
-from .fixture_note_lyric_events import foo_events, none_events
 
 
 def test_generic_language(foo_events):
@@ -26,5 +24,5 @@ def test_generic_language_none(none_events):
     language = GenericLanguage(music21.stream.Part(), strict=True)
     for event in none_events:
         phonemes = language.parse(*event)
-        assert type(phonemes) is list
+        assert isinstance(phonemes, list)
         assert not phonemes

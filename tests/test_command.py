@@ -1,6 +1,3 @@
-from .fixture_invoke_command import invoke_command
-
-
 def test_command_help(invoke_command):
     """Test if the command help works correctly."""
     result = invoke_command("--help")

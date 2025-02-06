@@ -10,6 +10,7 @@ Note:
     a good reference for translating Italian lyrics to phonemes with the
     :py:class:`Phoneme` syntax.
 """
+
 import proto  # type: ignore
 
 from .phoneme import Phoneme
