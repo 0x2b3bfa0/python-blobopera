@@ -35,6 +35,9 @@ Sphinx = "^3.4.3"
 [tool.poetry.scripts]
 blobopera = "blobopera.command:application"
 
+[tool.ruff]
+line-length = 79
+
 [tool.ruff.lint]
 extend-select = ["I"]
 
