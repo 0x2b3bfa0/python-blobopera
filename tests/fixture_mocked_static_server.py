@@ -5,11 +5,11 @@ from pathlib import Path
 import pytest  # type: ignore
 import responses  # type: ignore
 
-from .fixture_data_directory import data_directory
+from .fixture_data_directory import data_directory  # noqa: F401
 
 
 @pytest.fixture()
-def mocked_static_server(data_directory):
+def mocked_static_server(data_directory):  # noqa: F811
     """Fixture that provides a static server mock."""
     with responses.RequestsMock() as _responses:
         yield Static(_responses, data_directory)

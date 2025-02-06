@@ -3,6 +3,7 @@
 This file provides data import functions and some shared defaults and
 enumerations used by choice-like subcommand options.
 """
+
 from enum import Enum
 from typing import Type
 
@@ -73,8 +74,8 @@ class FillPhoneme(str, Enum):
     SILENCE = "SILENCE"
     A = "A"
     E = "E"
-    I = "I"
-    O = "O"
+    I = "I"  # noqa: E741
+    O = "O"  # noqa: E741
     U = "U"
 
 

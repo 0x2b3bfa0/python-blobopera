@@ -3,6 +3,7 @@
 This file describes a protocol for the interaction between the recording
 importer and the different language classes.
 """
+
 from abc import abstractmethod
 from typing import List, Protocol
 

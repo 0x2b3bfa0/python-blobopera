@@ -3,6 +3,7 @@
 This language module provides random lyrics as seen in the default Blob Opera
 carols. It should be avoided, whenever desirable, in favor of actual lyrics.
 """
+
 import random
 from typing import Callable, List
 

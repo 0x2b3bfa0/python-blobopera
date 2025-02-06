@@ -1,13 +1,15 @@
 import music21  # type: ignore
 import pytest  # type: ignore
 
-from blobopera.languages import GenericLanguage, RandomLanguage
-from blobopera.phoneme import Phoneme
+from blobopera.languages import RandomLanguage
 
-from .fixture_note_lyric_events import foo_events, foo_none_events
+from .fixture_note_lyric_events import (  # noqa: F401
+    foo_events,
+    foo_none_events,
+)
 
 
-def test_random_language(foo_none_events):
+def test_random_language(foo_none_events):  # noqa: F811
     language = RandomLanguage(music21.stream.Part(), strict=False)
     for event in foo_none_events:
         vowel, consonant = language.parse(*event)
@@ -15,7 +17,7 @@ def test_random_language(foo_none_events):
         assert vowel.is_vowel()
 
 
-def test_random_language_strict_fail(foo_events):
+def test_random_language_strict_fail(foo_events):  # noqa: F811
     language = RandomLanguage(music21.stream.Part(), strict=True)
     error = "random language doesn't accept lyrics"
     for event in foo_events:

@@ -1,4 +1,5 @@
 """Inspect the default corpus of libretto texts."""
+
 import requests
 import typer
 

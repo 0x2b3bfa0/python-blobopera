@@ -5,6 +5,7 @@ jitter templates used by the audio engine. The :py:class:`Jitter` class can
 be used to serialize and deserialize the ``jittertemplates.proto`` file from
 the original Blob Opera application.
 """
+
 from functools import partial
 from random import Random
 from typing import Any, Callable, Iterator
@@ -90,7 +91,6 @@ class Generator:
 
         # Iterate over randomly chosen templates with (previous, current) pairs
         for previous, current in pairwise(random):  # (0, 1), (1, 2), (2, 3)...
-
             # Get the tail (last values) of the previous template and the head
             # (first values) of the current template. Due to an off-by-one
             # error in the original code, the tail from the previous template

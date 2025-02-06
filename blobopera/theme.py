@@ -3,6 +3,7 @@
 This module describes the themes that can be used in the Blob Opera application
 user interface.
 """
+
 import proto  # type: ignore
 
 __protobuf__ = proto.module(package=__name__)

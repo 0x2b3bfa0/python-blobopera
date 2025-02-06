@@ -1,4 +1,5 @@
 """Operate with recording files and scores."""
+
 import tempfile
 from pathlib import Path
 
@@ -149,7 +150,7 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
         tempo=tempo,
         parts=parts,
         fill=Phoneme[fill.value],
-        location=Location[location.value]
+        location=Location[location.value],
     )
 
     output.write(

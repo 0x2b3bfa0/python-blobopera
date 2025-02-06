@@ -5,3 +5,5 @@ recordings and other artifacts from the servers.
 """
 
 from .backend import Backend
+
+__all__ = ["Backend"]

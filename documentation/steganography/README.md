@@ -24,7 +24,7 @@ Users that are in the know can build an extended descriptor in order to retrieve
     ```
     00000000: 0a0d 4865 6c6c 6f2c 2077 6f72 6c64 21    ..Hello, world!
     ```
-    
+
 2. Bob uploads a crafted message, which includes a valid greeting along with a hidden string, by using the following descriptor:
     ```proto
     syntax = "proto2";
@@ -40,7 +40,7 @@ Users that are in the know can build an extended descriptor in order to retrieve
     00000010: 134a 6f68 616e 6e65 7320 5472 6974 6865  .Johannes Trithe
     00000020: 6d69 7573                                mius
     ```
-    
+
 3. Alice stores the uploaded message as-is on her public server because she's able to parse it without noticing any difference.
 4. Charles downloads the message and parses it with the extended descriptor in order to recover the hidden text.
 
