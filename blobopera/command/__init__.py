@@ -19,7 +19,9 @@ def main(
         This function acts as the main application callback, and its only
         purpose is creating a singleton (more or less) backend object.
     """
-    context.obj = Backend(public_host, private_host, static_host, shortener_host)
+    context.obj = Backend(
+        public_host, private_host, static_host, shortener_host
+    )
 
 
 # Create the application with the documentation string and the main callback.

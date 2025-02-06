@@ -54,7 +54,9 @@ def test_import(data_directory, invoke_command):
         input = data_directory / "recording.musicxml"
         output = data_directory / f"recording.output.{format}"
         data_directory / "recording.binary"
-        result = invoke_command("recording", "import", "--format=binary", input, output)
+        result = invoke_command(
+            "recording", "import", "--format=binary", input, output
+        )
         assert result.exit_code == 0
         assert not result.exception
         assert not result.output

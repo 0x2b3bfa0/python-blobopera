@@ -25,7 +25,9 @@ class Static:
         """Initialize the mock server."""
         self.mock.add_callback(
             self.mock.GET,
-            re.compile(f"https?://{re.escape(self.static_host)}/blob-opera/.*"),
+            re.compile(
+                f"https?://{re.escape(self.static_host)}/blob-opera/.*"
+            ),
             callback=self.static,
         )
 

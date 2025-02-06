@@ -154,7 +154,9 @@ def _import(  # Prepend an underscore because import is a reserved keyword.
     )
 
     output.write(
-        common.convert(Recording.serialize(recording), format, message=Recording)
+        common.convert(
+            Recording.serialize(recording), format, message=Recording
+        )
     )
 
 
