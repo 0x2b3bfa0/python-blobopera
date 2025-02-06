@@ -1,12 +1,11 @@
 import filecmp
 
+from .fixture_data_directory import data_directory  # noqa: F401
+from .fixture_invoke_command import invoke_command  # noqa: F401
+from .fixture_mocked_backend import mocked_backend  # noqa: F401
 
-from .fixture_data_directory import data_directory
-from .fixture_invoke_command import invoke_command
-from .fixture_mocked_backend import mocked_backend
 
-
-def test_upload_download(data_directory, invoke_command, mocked_backend):
+def test_upload_download(data_directory, invoke_command, mocked_backend):  # noqa: F811
     """Test if the upload and download mechanisms work correctly."""
     for format in "raw", "binary", "json":
         input = data_directory / f"recording.{format}"
@@ -39,7 +38,7 @@ def test_upload_download(data_directory, invoke_command, mocked_backend):
         assert filecmp.cmp(output, input, shallow=False)
 
 
-def test_export(data_directory, invoke_command):
+def test_export(data_directory, invoke_command):  # noqa: F811
     """Test if the export mechanism works correctly."""
     for format in "raw", "binary", "json":
         input = data_directory / f"recording.{format}"
@@ -53,7 +52,7 @@ def test_export(data_directory, invoke_command):
         assert output.exists()
 
 
-def test_import(data_directory, invoke_command):
+def test_import(data_directory, invoke_command):  # noqa: F811
     """Test if the import mechanism works correctly."""
     for format in "raw", "binary", "json":
         input = data_directory / "recording.musicxml"
@@ -69,7 +68,7 @@ def test_import(data_directory, invoke_command):
         assert output.exists()
 
 
-def test_convert(data_directory, invoke_command):
+def test_convert(data_directory, invoke_command):  # noqa: F811
     """Test if the converted files conform to the expected samples."""
     for target in "binary", "json":
         for source in "raw", "binary", "json":

@@ -1,10 +1,11 @@
 import filecmp
 
-from .fixture_data_directory import data_directory
-from .fixture_invoke_command import invoke_command
-from .fixture_mocked_static_server import mocked_static_server
+from .fixture_data_directory import data_directory  # noqa: F401
+from .fixture_invoke_command import invoke_command  # noqa: F401
+from .fixture_mocked_static_server import mocked_static_server  # noqa: F401
 
-def test_download(data_directory, invoke_command, mocked_static_server):
+
+def test_download(data_directory, invoke_command, mocked_static_server):  # noqa: F811
     """Test if the download mechanism works correctly."""
     for format in "raw", "binary", "json":
         output = data_directory / f"downloaded.{format}"
@@ -23,7 +24,7 @@ def test_download(data_directory, invoke_command, mocked_static_server):
         assert filecmp.cmp(output, sample, shallow=False)
 
 
-def test_convert(data_directory, invoke_command):
+def test_convert(data_directory, invoke_command):  # noqa: F811
     """Test if the converted files conform to the expected samples."""
     for target in "binary", "json":
         for source in "raw", "binary", "json":
@@ -44,7 +45,7 @@ def test_convert(data_directory, invoke_command):
             assert filecmp.cmp(output, sample, shallow=False)
 
 
-def test_export(data_directory, invoke_command):
+def test_export(data_directory, invoke_command):  # noqa: F811
     """Test if the exported phonemes conform to the expected samples."""
     for file in "libretto.raw", "libretto.binary", "libretto.json":
         output = data_directory / f"{file}.generated.txt"
