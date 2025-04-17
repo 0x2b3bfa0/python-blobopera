@@ -4,6 +4,9 @@ on:
     types: [created]
 jobs:
   release:
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -19,9 +22,19 @@ jobs:
       env:
         PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}
     - run: poetry run poe document
-    - uses: peaceiris/actions-gh-pages@v3
+    - uses: actions/configure-pages@v5
+    - uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ github.token }}
-        publish_dir: ./documentation/module/_build/html
-        publish_branch: documentation
-        force_orphan: true
+        path: ./documentation/module/_build/html
+  deploy-pages:
+    needs: release
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
