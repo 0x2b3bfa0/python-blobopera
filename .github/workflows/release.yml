@@ -2,6 +2,7 @@ name: release
 on:
   release:
     types: [created]
+  push:
 jobs:
   release:
     permissions:
@@ -21,6 +22,7 @@ jobs:
     - run: poetry publish --build -u __token__ -p $PYPI_TOKEN
       env:
         PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}
+      if: false
     - run: poetry run poe document
     - uses: actions/configure-pages@v5
     - uses: actions/upload-pages-artifact@v3
